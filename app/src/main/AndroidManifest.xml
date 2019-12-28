@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lazycoder.cakevpn">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +19,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+    <activity
+        android:name="de.blinkt.openvpn.DisconnectVPNActivity"
+        android:excludeFromRecents="true"
+        android:noHistory="true"
+        android:taskAffinity=".DisconnectVPN"
+        android:theme="@style/blinkt.dialog" />
+
+    <service
+        android:name="de.blinkt.openvpn.core.OpenVPNService"
+        android:permission="android.permission.BIND_VPN_SERVICE">
+        <intent-filter>
+            <action android:name="android.net.VpnService" />
+        </intent-filter>
+    </service>
+
+    </application>
 </manifest>
