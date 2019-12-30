@@ -2,7 +2,8 @@
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/toolbar">
 
     <RelativeLayout
         android:layout_width="match_parent"

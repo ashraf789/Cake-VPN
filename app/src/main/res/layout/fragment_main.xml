@@ -1,87 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="10dp"
-    android:background="@drawable/france_bg"
-    android:paddingBottom="5dp">>
-    <LinearLayout
-        android:layout_above="@+id/connectionStatus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<layout>
 
-        <TextView
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/france_bg"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingBottom="5dp">>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:textColor="#ffffff"
-            android:gravity="center"
-            android:id="@+id/logTv"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
-        android:id="@+id/connectionStatus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <Button
-            android:textSize="16sp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:id="@+id/connectionBtn"
-            android:onClick="connect"
-            android:textColor="#cecbcb"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="Connect"
-            android:background="@drawable/button"/>
+            android:layout_above="@+id/connectionStatus">
 
-        <TextView
-            android:textSize="15sp"
-            android:fontFamily="monospace"
-            android:textStyle="bold"
-            android:layout_marginTop="15dp"
-            android:textColor="#ffffff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Connection Status"/>
-        <TextView
-            android:textSize="14sp"
-            android:fontFamily="sans-serif-condensed"
-            android:id="@+id/durationTv"
-            android:layout_marginLeft="10dp"
-            android:textColor="#ffffff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Duration: 00:00:00" />
-        <TextView
-            android:fontFamily="sans-serif-condensed"
-            android:id="@+id/lastPacketRTv"
-            android:layout_marginLeft="10dp"
-            android:textSize="14sp"
-            android:textColor="#ffffff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Packet Received:" />
-        <TextView
-            android:fontFamily="sans-serif-condensed"
-            android:id="@+id/byteInTv"
-            android:layout_marginLeft="10dp"
-            android:textSize="14sp"
-            android:textColor="#ffffff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bytes In: " />
-        <TextView
-            android:fontFamily="sans-serif-condensed"
-            android:id="@+id/byteOutTv"
-            android:layout_marginLeft="10dp"
-            android:textSize="14sp"
-            android:textColor="#ffffff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bytes OUT: " />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/logTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:textColor="#ffffff" />
+        </LinearLayout>
 
-</RelativeLayout>
+        <LinearLayout
+            android:id="@+id/connectionStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="100dp"
+            android:orientation="vertical">
+
+            <Button
+                android:tag="1"
+                android:id="@+id/vpnBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/button"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Connect"
+                android:textColor="#cecbcb"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="monospace"
+                android:text="Connection Status"
+                android:textColor="#ffffff"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/durationTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Duration: 00:00:00"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/lastPacketRTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Packet Received:"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/byteInTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Bytes In: "
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/byteOutTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Bytes OUT: "
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>
