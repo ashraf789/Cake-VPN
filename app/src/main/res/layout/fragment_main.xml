@@ -4,10 +4,10 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/france_bg"
         android:orientation="vertical"
         android:paddingLeft="10dp"
-        android:paddingBottom="5dp">>
+        android:paddingBottom="5dp"
+        android:background="@drawable/burj_khalifa">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,24 +24,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginLeft="20px"
             android:id="@+id/connectionStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="100dp"
+            android:layout_centerInParent="true"
             android:orientation="vertical">
-
-            <Button
-                android:tag="1"
-                android:id="@+id/vpnBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:background="@drawable/button"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="Connect"
-                android:textColor="#cecbcb"
-                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -92,6 +80,19 @@
                 android:text="Bytes OUT: "
                 android:textColor="#ffffff"
                 android:textSize="14sp" />
+
+            <Button
+                android:layout_marginRight="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:tag="1"
+                android:id="@+id/vpnBtn"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:background="@drawable/button"
+                android:text="Connect"
+                android:textColor="#cecbcb"
+                android:textSize="16sp" />
         </LinearLayout>
 
     </RelativeLayout>
