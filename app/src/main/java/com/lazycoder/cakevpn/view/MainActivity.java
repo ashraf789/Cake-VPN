@@ -16,7 +16,9 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.lazycoder.cakevpn.R;
+import com.lazycoder.cakevpn.SharedPreference;
 import com.lazycoder.cakevpn.adapter.ServerListRVAdapter;
+import com.lazycoder.cakevpn.interfaces.ChangeServer;
 import com.lazycoder.cakevpn.interfaces.NavItemClickListener;
 import com.lazycoder.cakevpn.model.Server;
 
@@ -32,8 +34,9 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
     private ArrayList<Server> serverLists;
     private ServerListRVAdapter serverListRVAdapter;
     private DrawerLayout drawer;
+    private ChangeServer changeServer;
 
-    public static final String TAG = "KingVPN";
+    public static final String TAG = "CakeVPN";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
         serverListRv.setLayoutManager(new LinearLayoutManager(this));
 
         serverLists = getServerList();
+        changeServer = (ChangeServer) fragment;
 
     }
 
@@ -140,7 +144,6 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
     @Override
     public void clickedItem(int index) {
         closeDrawer();
-
-        Log.d(TAG, "clickedItem: "+serverLists.get(index).getCountry());
+        changeServer.newServer(serverLists.get(index));
     }
 }

@@ -18,9 +18,12 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.bumptech.glide.Glide;
 import com.lazycoder.cakevpn.CheckInternetConnection;
 import com.lazycoder.cakevpn.R;
+import com.lazycoder.cakevpn.SharedPreference;
 import com.lazycoder.cakevpn.databinding.FragmentMainBinding;
+import com.lazycoder.cakevpn.interfaces.ChangeServer;
 import com.lazycoder.cakevpn.model.Server;
 
 import java.io.BufferedReader;
@@ -35,19 +38,22 @@ import de.blinkt.openvpn.core.VpnStatus;
 
 import static android.app.Activity.RESULT_OK;
 
-public class MainFragment extends Fragment implements View.OnClickListener {
+public class MainFragment extends Fragment implements View.OnClickListener, ChangeServer {
 
-    private String ovpnServer = "sweden.ovpn";
-    private String ovpnUserName = "vpn";
-    private String ovpnUserPassword = "vpn";
+    //    private String ovpnServer = "sweden.ovpn";
+//    private String ovpnUserName = "vpn";
+//    private String ovpnUserPassword = "vpn";
+//
     private Server server;
     private CheckInternetConnection connection;
 
     private OpenVPNThread vpnThread = new OpenVPNThread();
     private OpenVPNService vpnService = new OpenVPNService();
     boolean vpnStart = false;
+    private SharedPreference preference;
 
     private FragmentMainBinding binding;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,6 +67,12 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initializeAll() {
+        preference = new SharedPreference(getContext());
+        server = preference.getServer();
+
+        // Update current selected server icon
+        updateCurrentServerIcon(server.getFlagUrl());
+
         connection = new CheckInternetConnection();
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter("connectionState"));
 
@@ -106,6 +118,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     /**
      * Stop vpn
+     *
      * @return boolean
      */
     public boolean stopVpn() {
@@ -148,7 +161,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     private void startVpn() {
         try {
 
-            InputStream conf = getActivity().getAssets().open(ovpnServer);// your own file in /assets/client.ovpn
+            InputStream conf = getActivity().getAssets().open(server.getOvpn());// .ovpn file
             InputStreamReader isr = new InputStreamReader(conf);
             BufferedReader br = new BufferedReader(isr);
             String config = "";
@@ -159,7 +172,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                 config += line + "\n";
             }
             br.readLine();
-            OpenVpnApi.startVpn(getContext(), config, ovpnUserName, ovpnUserPassword);//"shieldedvpn","ZTHqKDMbzmZgl5PJ"
+            OpenVpnApi.startVpn(getContext(), config, server.getOvpnUserName(), server.getOvpnUserPassword());
             binding.logTv.setText("Connecting...");
 
         } catch (IOException | RemoteException e) {
@@ -239,7 +252,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                 //when sendMessage(String state) call this method will be called
             }
 
-            try{
+            try {
 
                 String duration = intent.getStringExtra("duration");
                 String lastPacketReceive = intent.getStringExtra("lastPacketReceive");
@@ -250,23 +263,67 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                 if (lastPacketReceive.equals(null)) lastPacketReceive = "0";
                 if (byteIn.equals(null)) byteIn = " ";
                 if (byteOut.equals(null)) byteOut = " ";
-                updateConnectionStatus(duration,lastPacketReceive,byteIn,byteOut);
-            }catch (Exception e){
+                updateConnectionStatus(duration, lastPacketReceive, byteIn, byteOut);
+            } catch (Exception e) {
                 //when sendMessage(String val,String val,..) called then it will be called
             }
 
         }
     };
 
-    public void updateConnectionStatus(String duration,String lastPacketReceive,String byteIn,String byteOut){
-        binding.durationTv.setText("Duration: "+duration);
-        binding.lastPacketReceiveTv.setText("Packet Received: "+lastPacketReceive+" second ago");
-        binding.byteInTv.setText("Bytes In: "+byteIn);
-        binding.byteOutTv.setText("Bytes Out: "+byteOut);
+    public void updateConnectionStatus(String duration, String lastPacketReceive, String byteIn, String byteOut) {
+        binding.durationTv.setText("Duration: " + duration);
+        binding.lastPacketReceiveTv.setText("Packet Received: " + lastPacketReceive + " second ago");
+        binding.byteInTv.setText("Bytes In: " + byteIn);
+        binding.byteOutTv.setText("Bytes Out: " + byteOut);
     }
 
     // show toast message
     public void showToast(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void updateCurrentServerIcon(String serverIcon) {
+        Glide.with(getContext())
+                .load(serverIcon)
+                .into(binding.selectedServerIcon);
+    }
+
+    /**
+     * Change server when user select new server
+     *
+     * @param server ovpn server details
+     */
+    @Override
+    public void newServer(Server server) {
+        this.server = server;
+        updateCurrentServerIcon(server.getFlagUrl());
+
+        // Stop previous connection
+        if (vpnStart) {
+            stopVpn();
+        }
+
+        prepareVpn();
+    }
+
+    @Override
+    public void onResume() {
+        if (server == null) {
+            server = preference.getServer();
+        }
+        super.onResume();
+    }
+
+    /**
+     * Save current selected server on local shared preference
+     */
+    @Override
+    public void onStop() {
+        if (server != null) {
+            preference.saveServer(server);
+        }
+
+        super.onStop();
     }
 }
