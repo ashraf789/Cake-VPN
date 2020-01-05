@@ -1,4 +1,4 @@
-package com.lazycoder.cakevpn;
+package com.lazycoder.cakevpn.view;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.lazycoder.cakevpn.R;
 
 
 public class MainActivity extends AppCompatActivity {

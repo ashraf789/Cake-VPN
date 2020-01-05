@@ -1,4 +1,4 @@
-package com.lazycoder.cakevpn;
+package com.lazycoder.cakevpn.view;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,6 +18,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.lazycoder.cakevpn.CheckInternetConnection;
+import com.lazycoder.cakevpn.R;
 import com.lazycoder.cakevpn.databinding.FragmentMainBinding;
 
 import java.io.BufferedReader;
@@ -70,18 +72,14 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         binding.vpnBtn.setOnClickListener(this);
         isServiceRunning();//checking is vpn already running or not
         VpnStatus.initLogCache(getActivity().getCacheDir());
-
-
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.vpnBtn:
-
                 prepareVpn();
                 return;
-
         }
     }
 
@@ -103,7 +101,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         } else if (stopVpn()) {
 
             showToast("Disconnect Successfully");
-
         }
     }
 
@@ -199,7 +196,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             case "NONETWORK":
                 binding.logTv.setText("No network connection");
                 break;
-
         }
 
     }
@@ -261,6 +257,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
         }
     };
+
     public void updateConnectionStatus(String duration,String lastPacketReceive,String byteIn,String byteOut){
         binding.durationTv.setText("Duration: "+duration);
         binding.lastPacketReceiveTv.setText("Packet Received: "+lastPacketReceive+" second ago");
