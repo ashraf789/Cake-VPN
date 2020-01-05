@@ -1,8 +1,8 @@
 # Cake-VPN
-A Android VPN app based on OpenVPN library.
+Android VPN app based on OpenVPN library.
 
 </br>
-<img height='400' width ='300' src="https://i.imgur.com/5GV1Y2L.gif" />
+<img height='500' width ='300' src="https://i.imgur.com/5GV1Y2L.gif" />
 </br></br>
 
 ## Note
