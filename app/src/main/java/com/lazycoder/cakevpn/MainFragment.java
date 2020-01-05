@@ -28,12 +28,13 @@ import java.io.InputStreamReader;
 import de.blinkt.openvpn.OpenVpnApi;
 import de.blinkt.openvpn.core.OpenVPNService;
 import de.blinkt.openvpn.core.OpenVPNThread;
+import de.blinkt.openvpn.core.VpnStatus;
 
 import static android.app.Activity.RESULT_OK;
 
-public class MainFragment extends Fragment implements View.OnClickListener{
+public class MainFragment extends Fragment implements View.OnClickListener {
 
-    private String ovpnServer = "vpn-credential.ovpn";
+    private String ovpnServer = "japan.ovpn";
     private String ovpnUserName = "";
     private String ovpnUserPassword = "";
     private CheckInternetConnection connection;
@@ -43,6 +44,7 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     boolean vpnStart = false;
 
     private FragmentMainBinding binding;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,7 +60,7 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     private void initializeAll() {
         connection = new CheckInternetConnection();
 
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver,new IntentFilter("connectionState"));
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter("connectionState"));
 
     }
 
@@ -66,53 +68,52 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.vpnBtn.setOnClickListener(this);
-//        isServiceRunning();//checking is vpn already running or not
-//        VpnStatus.initLogCache(getActivity().getCacheDir());
+        isServiceRunning();//checking is vpn already running or not
+        VpnStatus.initLogCache(getActivity().getCacheDir());
 
 
     }
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.vpnBtn:
-                if (binding.vpnBtn.getTag().equals("1")) {
-                    prepareVpn();
-                    return;
-                }
 
-                stopVpn();
-                break;
+                prepareVpn();
+                return;
+
         }
     }
+
     //prepare for vpn connect with required permission
     private void prepareVpn() {
-        if (!vpnStart){
-            if (getInternetStatus()){
+        if (!vpnStart) {
+            if (getInternetStatus()) {
                 //checking permission for network monitor
                 Intent intent = VpnService.prepare(getContext());
-                if (intent !=null){
-                    startActivityForResult(intent,1);
-                }else startVpn();//have already permission
+                if (intent != null) {
+                    startActivityForResult(intent, 1);
+                } else startVpn();//have already permission
                 status("connecting");
 
-            }else {
+            } else {
                 showToast("you have no internet connection !!");
             }
 
-        }else if (stopVpn()){
+        } else if (stopVpn()) {
 
             showToast("Disconnect Successfully");
 
         }
     }
 
-    public boolean stopVpn(){
+    public boolean stopVpn() {
         try {
             vpnThread.stop();
             status("connect");
             vpnStart = false;
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
@@ -123,22 +124,22 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK){
+        if (resultCode == RESULT_OK) {
             startVpn();
 
-        }else {
+        } else {
             showToast("Permission Deny !! ");
         }
     }
 
     // internet connection status.
-    public boolean getInternetStatus(){
+    public boolean getInternetStatus() {
         return connection.netCheck(getContext());
     }
 
 
     //checking is service is connected
-    public void isServiceRunning(){
+    public void isServiceRunning() {
         setStatus(vpnService.getStatus());
     }
 
@@ -157,7 +158,7 @@ public class MainFragment extends Fragment implements View.OnClickListener{
                 config += line + "\n";
             }
             br.readLine();
-            OpenVpnApi.startVpn(getContext(), config,ovpnUserName,ovpnUserPassword);//"shieldedvpn","ZTHqKDMbzmZgl5PJ"
+            OpenVpnApi.startVpn(getContext(), config, ovpnUserName, ovpnUserPassword);//"shieldedvpn","ZTHqKDMbzmZgl5PJ"
             binding.logTv.setText("Connecting...");
 
         } catch (IOException | RemoteException e) {
@@ -167,8 +168,8 @@ public class MainFragment extends Fragment implements View.OnClickListener{
 
 
     //status change with corresponding vpn connection status
-    public void setStatus(String connectionState){
-        switch (connectionState){
+    public void setStatus(String connectionState) {
+        switch (connectionState) {
             case "DISCONNECTED":
                 status("connect");
                 vpnStart = false;
@@ -200,33 +201,30 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     }
 
     //it will change button background color and text
-    public void status(String status){
+    public void status(String status) {
 
-        if (status.equals("connect")){
+        if (status.equals("connect")) {
 
-            binding.vpnBtn.setTag("1");
-            binding.vpnBtn.setText(R.string.vpn_on);
-        }else if (status.equals("connecting")){
-            binding.vpnBtn.setTag("0");
-            binding.vpnBtn.setText(getString(R.string.vpn_off));
-        }else if (status.equals("connected")){
+            binding.vpnBtn.setText(getString(R.string.connect));
+        } else if (status.equals("connecting")) {
+            binding.vpnBtn.setText(getString(R.string.connecting));
+        } else if (status.equals("connected")) {
 
-            binding.vpnBtn.setTag("0");
-            binding.vpnBtn.setText(R.string.vpn_off);
+            binding.vpnBtn.setText(getString(R.string.disconnect));
 
-        }else if (status.equals("tryDifferentServer")){
+        } else if (status.equals("tryDifferentServer")) {
 
-            binding.vpnBtn.setTag("0");
-            binding.vpnBtn.setText(R.string.vpn_off);
-        }else if (status.equals("loading")){
-
-            binding.vpnBtn.setTag("1");
-            binding.vpnBtn.setText(R.string.vpn_on);
-        }else if (status.equals("invalidDevice")){
-            binding.vpnBtn.setTag("1");
-            binding.vpnBtn.setText(R.string.vpn_on);
-        }else if (status.equals("authenticationCheck")){
-
+            binding.vpnBtn.setBackgroundResource(R.drawable.button_connected);
+            binding.vpnBtn.setText("Try Different\nServer");
+        } else if (status.equals("loading")) {
+            binding.vpnBtn.setBackgroundResource(R.drawable.button);
+            binding.vpnBtn.setText("Loading Server..");
+        } else if (status.equals("invalidDevice")) {
+            binding.vpnBtn.setBackgroundResource(R.drawable.button_connected);
+            binding.vpnBtn.setText("Invalid Device");
+        } else if (status.equals("authenticationCheck")) {
+            binding.vpnBtn.setBackgroundResource(R.drawable.button_connecting);
+            binding.vpnBtn.setText("Authentication \n Checking...");
         }
 
     }
@@ -237,15 +235,37 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         public void onReceive(Context context, Intent intent) {
             try {
                 setStatus(intent.getStringExtra("state"));
-            }catch (Exception e){
+            } catch (Exception e) {
                 //when sendMessage(String state) call this method will be called
+            }
+
+            try{
+
+                String duration = intent.getStringExtra("duration");
+                String lastPacketReceive = intent.getStringExtra("lastPacketReceive");
+                String byteIn = intent.getStringExtra("byteIn");
+                String byteOut = intent.getStringExtra("byteOut");
+
+                if (duration.equals(null)) duration = "00:00:00";
+                if (lastPacketReceive.equals(null)) lastPacketReceive = "0";
+                if (byteIn.equals(null)) byteIn = " ";
+                if (byteOut.equals(null)) byteOut = " ";
+                updateConnectionStatus(duration,lastPacketReceive,byteIn,byteOut);
+            }catch (Exception e){
+                //when sendMessage(String val,String val,..) called then it will be called
             }
 
         }
     };
+    public void updateConnectionStatus(String duration,String lastPacketReceive,String byteIn,String byteOut){
+        binding.durationTv.setText("Duration: "+duration);
+        binding.lastPacketReceiveTv.setText("Packet Received: "+lastPacketReceive+" second ago");
+        binding.byteInTv.setText("Bytes In: "+byteIn);
+        binding.byteOutTv.setText("Bytes Out: "+byteOut);
+    }
 
     // show toast message
-    public void showToast(String message){
-        Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
+    public void showToast(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
