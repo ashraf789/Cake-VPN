@@ -38,6 +38,11 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:retrofit:2.7.0'
 
+    // Glide image loader
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+
+
     implementation project(':vpnLib')
 
 }

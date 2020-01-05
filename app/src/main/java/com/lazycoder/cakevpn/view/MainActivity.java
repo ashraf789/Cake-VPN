@@ -93,10 +93,10 @@ public class MainActivity extends AppCompatActivity {
                 "japan.ovpn"
         ));
         servers.add(new ServerList("Japan2",
-                getImgURL(R.drawable.usa_flag),
+                getImgURL(R.drawable.fr_flag),
                 "japan.ovpn"
         ));        servers.add(new ServerList("Japan3",
-                getImgURL(R.drawable.usa_flag),
+                getImgURL(R.drawable.uk_flag),
                 "japan.ovpn"
         ));
 

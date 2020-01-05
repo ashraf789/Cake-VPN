@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.lazycoder.cakevpn.R;
 import com.lazycoder.cakevpn.model.ServerList;
 
@@ -30,13 +31,17 @@ public class ServerListRVAdapter extends RecyclerView.Adapter<ServerListRVAdapte
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.server_list_view,parent,false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.server_list_view, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
         holder.serverCountry.setText(serverLists.get(position).getCountry());
+        Glide.with(mContext)
+                .load(serverLists.get(position).getFlagUrl())
+                .into(holder.serverIcon);
 
         holder.serverItemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
