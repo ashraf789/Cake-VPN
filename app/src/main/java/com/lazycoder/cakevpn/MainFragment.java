@@ -28,13 +28,12 @@ import java.io.InputStreamReader;
 import de.blinkt.openvpn.OpenVpnApi;
 import de.blinkt.openvpn.core.OpenVPNService;
 import de.blinkt.openvpn.core.OpenVPNThread;
-import de.blinkt.openvpn.core.VpnStatus;
 
 import static android.app.Activity.RESULT_OK;
 
 public class MainFragment extends Fragment implements View.OnClickListener{
 
-    private String ovpnServer = "vpn-credential.ovpn";
+    private String ovpnServer = "ovpn/vpn-credential.ovpn";
     private String ovpnUserName = "";
     private String ovpnUserPassword = "";
     private CheckInternetConnection connection;
