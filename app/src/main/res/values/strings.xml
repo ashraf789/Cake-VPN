@@ -2,4 +2,9 @@
     <string name="app_name">Cake VPN</string>
     <string name="vpn_on">VPN ON</string>
     <string name="vpn_off">VPN OFF</string>
+    <string name="navigation_drawer_open">drawer open</string>
+    <string name="navigation_drawer_close">drawer close</string>
+    <string name="connect">Connect</string>
+    <string name="connecting">Connecting</string>
+    <string name="disconnect">Disconnect</string>
 </resources>

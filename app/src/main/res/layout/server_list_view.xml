@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="20dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:id="@+id/serverItemLayout">
+
+    <ImageView
+        android:id="@+id/iconImg"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/usa_flag" />
+
+    <TextView
+        android:id="@+id/countryTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="united kingdom"
+        android:textAllCaps="true"
+        android:textColor="@color/colorWhite" />
+</LinearLayout>
