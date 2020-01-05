@@ -61,7 +61,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     private void initializeAll() {
         connection = new CheckInternetConnection();
-
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter("connectionState"));
 
     }
