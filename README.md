@@ -2,7 +2,7 @@
 Android VPN app based on OpenVPN library.
 
 </br>
-<img height='500' width ='300' src="https://i.imgur.com/5GV1Y2L.gif" />
+<img height='450' width ='250' src="https://i.imgur.com/5GV1Y2L.gif" />
 </br></br>
 
 ## Note
