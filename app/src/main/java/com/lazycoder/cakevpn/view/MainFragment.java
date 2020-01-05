@@ -21,6 +21,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.lazycoder.cakevpn.CheckInternetConnection;
 import com.lazycoder.cakevpn.R;
 import com.lazycoder.cakevpn.databinding.FragmentMainBinding;
+import com.lazycoder.cakevpn.model.Server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -39,6 +40,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     private String ovpnServer = "sweden.ovpn";
     private String ovpnUserName = "vpn";
     private String ovpnUserPassword = "vpn";
+    private Server server;
     private CheckInternetConnection connection;
 
     private OpenVPNThread vpnThread = new OpenVPNThread();
@@ -46,7 +48,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     boolean vpnStart = false;
 
     private FragmentMainBinding binding;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

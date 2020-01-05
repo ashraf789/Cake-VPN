@@ -1,7 +1,6 @@
 package com.lazycoder.cakevpn.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,18 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.lazycoder.cakevpn.R;
-import com.lazycoder.cakevpn.model.ServerList;
+import com.lazycoder.cakevpn.interfaces.NavItemClickListener;
+import com.lazycoder.cakevpn.model.Server;
 
 import java.util.ArrayList;
 
 public class ServerListRVAdapter extends RecyclerView.Adapter<ServerListRVAdapter.MyViewHolder> {
 
-    private ArrayList<ServerList> serverLists;
+    private ArrayList<Server> serverLists;
     private Context mContext;
+    private NavItemClickListener listener;
 
-    public ServerListRVAdapter(ArrayList<ServerList> serverLists, Context context) {
+    public ServerListRVAdapter(ArrayList<Server> serverLists, Context context) {
         this.serverLists = serverLists;
         this.mContext = context;
+        listener = (NavItemClickListener) context;
     }
 
     @NonNull
@@ -46,7 +48,7 @@ public class ServerListRVAdapter extends RecyclerView.Adapter<ServerListRVAdapte
         holder.serverItemLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                listener.clickedItem(position);
             }
         });
     }

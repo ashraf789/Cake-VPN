@@ -1,6 +1,6 @@
 package com.lazycoder.cakevpn.model;
 
-public class ServerList {
+public class Server {
     private String country;
     private String flagUrl;
     private String ovpn;
@@ -8,16 +8,16 @@ public class ServerList {
     private String ovpnUserPassword;
 
 
-    public ServerList() {
+    public Server() {
     }
 
-    public ServerList(String country, String flagUrl, String ovpn) {
+    public Server(String country, String flagUrl, String ovpn) {
         this.country = country;
         this.flagUrl = flagUrl;
         this.ovpn = ovpn;
     }
 
-    public ServerList(String country, String flagUrl, String ovpn, String ovpnUserName, String ovpnUserPassword) {
+    public Server(String country, String flagUrl, String ovpn, String ovpnUserName, String ovpnUserPassword) {
         this.country = country;
         this.flagUrl = flagUrl;
         this.ovpn = ovpn;

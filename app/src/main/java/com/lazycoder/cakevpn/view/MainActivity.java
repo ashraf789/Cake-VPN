@@ -10,30 +10,37 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.lazycoder.cakevpn.R;
 import com.lazycoder.cakevpn.adapter.ServerListRVAdapter;
-import com.lazycoder.cakevpn.model.ServerList;
+import com.lazycoder.cakevpn.interfaces.NavItemClickListener;
+import com.lazycoder.cakevpn.model.Server;
 
 import java.util.ArrayList;
 
+import static com.lazycoder.cakevpn.Utils.getImgURL;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements NavItemClickListener {
     private FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
     private Fragment fragment;
     private RecyclerView serverListRv;
-    private ArrayList<ServerList> serverLists;
+    private ArrayList<Server> serverLists;
     private ServerListRVAdapter serverListRVAdapter;
+    private DrawerLayout drawer;
 
+    public static final String TAG = "KingVPN";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        initializeAll();//initialize all variable
+
         ImageButton menuRight = findViewById(R.id.navbar_right);
 
 
@@ -43,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
-        final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -51,15 +57,10 @@ public class MainActivity extends AppCompatActivity {
         menuRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (drawer.isDrawerOpen(GravityCompat.END)) {
-                    drawer.closeDrawer(GravityCompat.END);
-                } else {
-                    drawer.openDrawer(GravityCompat.END);
-                }
+                closeDrawer();
             }
         });
 
-        initializeAll();//initialize all variable
         transaction.add(R.id.container, fragment);
         transaction.commit();
 
@@ -75,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
      * Initialize all object, listener etc
      */
     private void initializeAll() {
+        drawer = findViewById(R.id.drawer_layout);
+
         fragment = new MainFragment();
         serverListRv = findViewById(R.id.serverListRv);
         serverListRv.setHasFixedSize(true);
@@ -85,32 +88,40 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void closeDrawer(){
+        if (drawer.isDrawerOpen(GravityCompat.END)) {
+            drawer.closeDrawer(GravityCompat.END);
+        } else {
+            drawer.openDrawer(GravityCompat.END);
+        }
+    }
+
     /**
      * Generate server array list
      */
     private ArrayList getServerList() {
 
-        ArrayList<ServerList> servers = new ArrayList<>();
+        ArrayList<Server> servers = new ArrayList<>();
 
-        servers.add(new ServerList("United States",
+        servers.add(new Server("United States",
                 getImgURL(R.drawable.usa_flag),
                 "us.ovpn",
                 "vpn",
                 "vpn"
         ));
-        servers.add(new ServerList("Japan",
+        servers.add(new Server("Japan",
                 getImgURL(R.drawable.japan),
                 "japan.ovpn",
                 "vpn",
                 "vpn"
         ));
-        servers.add(new ServerList("Sweden",
+        servers.add(new Server("Sweden",
                 getImgURL(R.drawable.sweden),
                 "sweden.ovpn",
                 "vpn",
                 "vpn"
         ));
-        servers.add(new ServerList("Korea",
+        servers.add(new Server("Korea",
                 getImgURL(R.drawable.korea),
                 "korea.ovpn",
                 "vpn",
@@ -120,14 +131,16 @@ public class MainActivity extends AppCompatActivity {
         return servers;
     }
 
+
+
     /**
-     * Convert drawable image resource to string
-     *
-     * @param resourceId drawable image resource
-     * @return image path
+     * On navigation item click this
+     * @param index
      */
-    public String getImgURL(int resourceId) {
-        //use BuildConfig.APPLICATION_ID instead of R.class.getPackage().getName() if both are not same
-        return Uri.parse("android.resource://" + R.class.getPackage().getName() + "/" + resourceId).toString();
+    @Override
+    public void clickedItem(int index) {
+        closeDrawer();
+
+        Log.d(TAG, "clickedItem: "+serverLists.get(index).getCountry());
     }
 }
