@@ -33,7 +33,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class MainFragment extends Fragment implements View.OnClickListener{
 
-    private String ovpnServer = "ovpn/vpn-credential.ovpn";
+    private String ovpnServer = "vpn-credential.ovpn";
     private String ovpnUserName = "";
     private String ovpnUserPassword = "";
     private CheckInternetConnection connection;
