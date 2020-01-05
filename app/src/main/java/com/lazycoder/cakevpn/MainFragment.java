@@ -107,6 +107,10 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    /**
+     * Stop vpn
+     * @return boolean
+     */
     public boolean stopVpn() {
         try {
             vpnThread.stop();
@@ -138,12 +142,12 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    //checking is service is connected
+    // checking is service is connected
     public void isServiceRunning() {
         setStatus(vpnService.getStatus());
     }
 
-    //if all reburied permission is granted then start vpn
+    // if all reburied permission is granted then start vpn
     private void startVpn() {
         try {
 
@@ -229,7 +233,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    //receiving broadcasted message
+    // receiving broadcast message
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
