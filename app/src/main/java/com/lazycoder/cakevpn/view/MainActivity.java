@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.lazycoder.cakevpn.R;
 import com.lazycoder.cakevpn.adapter.ServerListRVAdapter;
@@ -37,8 +38,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -60,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
 
         // Server List recycler view initialize
-        if (serverLists != null){
+        if (serverLists != null) {
             serverListRVAdapter = new ServerListRVAdapter(serverLists, this);
             serverListRv.setAdapter(serverListRVAdapter);
         }
@@ -88,16 +92,29 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<ServerList> servers = new ArrayList<>();
 
-        servers.add(new ServerList("Japan1",
+        servers.add(new ServerList("United States",
                 getImgURL(R.drawable.usa_flag),
-                "japan.ovpn"
+                "us.ovpn",
+                "vpn",
+                "vpn"
         ));
-        servers.add(new ServerList("Japan2",
-                getImgURL(R.drawable.fr_flag),
-                "japan.ovpn"
-        ));        servers.add(new ServerList("Japan3",
-                getImgURL(R.drawable.uk_flag),
-                "japan.ovpn"
+        servers.add(new ServerList("Japan",
+                getImgURL(R.drawable.japan),
+                "japan.ovpn",
+                "vpn",
+                "vpn"
+        ));
+        servers.add(new ServerList("Sweden",
+                getImgURL(R.drawable.sweden),
+                "sweden.ovpn",
+                "vpn",
+                "vpn"
+        ));
+        servers.add(new ServerList("Korea",
+                getImgURL(R.drawable.korea),
+                "korea.ovpn",
+                "vpn",
+                "vpn"
         ));
 
         return servers;

@@ -36,9 +36,9 @@ import static android.app.Activity.RESULT_OK;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
 
-    private String ovpnServer = "japan.ovpn";
-    private String ovpnUserName = "";
-    private String ovpnUserPassword = "";
+    private String ovpnServer = "sweden.ovpn";
+    private String ovpnUserName = "vpn";
+    private String ovpnUserPassword = "vpn";
     private CheckInternetConnection connection;
 
     private OpenVPNThread vpnThread = new OpenVPNThread();

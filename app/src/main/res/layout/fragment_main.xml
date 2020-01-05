@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:gravity="center"
-                android:textColor="#ffffff" />
+                android:textColor="@color/colorWhite" />
         </LinearLayout>
 
         <LinearLayout
@@ -36,7 +36,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="monospace"
                 android:text="Connection Status"
-                android:textColor="#ffffff"
+                android:textColor="@color/colorWhite"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -47,7 +47,7 @@
                 android:layout_marginLeft="10dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="Duration: 00:00:00"
-                android:textColor="#ffffff"
+                android:textColor="@color/colorWhite"
                 android:textSize="14sp" />
 
             <TextView
@@ -57,7 +57,7 @@
                 android:layout_marginLeft="10dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="Packet Received:"
-                android:textColor="#ffffff"
+                android:textColor="@color/colorWhite"
                 android:textSize="14sp" />
 
             <TextView
@@ -67,7 +67,7 @@
                 android:layout_marginLeft="10dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="Bytes In: "
-                android:textColor="#ffffff"
+                android:textColor="@color/colorWhite"
                 android:textSize="14sp" />
 
             <TextView
@@ -77,7 +77,7 @@
                 android:layout_marginLeft="10dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="Bytes OUT: "
-                android:textColor="#ffffff"
+                android:textColor="@color/colorWhite"
                 android:textSize="14sp" />
 
             <Button
@@ -90,9 +90,16 @@
                 android:layout_height="35dp"
                 android:background="@drawable/button"
                 android:text="Connect"
-                android:textColor="#cecbcb"
+                android:textColor="@color/colorWhite"
                 android:textSize="16sp" />
         </LinearLayout>
-
+        <ImageView
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:id="@+id/serverIcon"
+            android:src="@drawable/usa_flag"/>
     </RelativeLayout>
 </layout>
