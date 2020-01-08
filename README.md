@@ -14,7 +14,7 @@ I am not sure how long it will work with the free ovpn file. It's better to upda
 ### Instruction to update server list:
 1. Replace your .ovpn file with <b> assets/</b> directory .ovpn file
 2. Now go to MainActivity.class and find the "getServerList()" method there you have to update server information.
-3. At Last go to SharedPreference.class and find the "getServer()" method there you have update default server information.
+3. At Last go to SharedPreference.class and find the "getServer()" method there you have to update default server information.
 </br> </br>
 
 ## License
