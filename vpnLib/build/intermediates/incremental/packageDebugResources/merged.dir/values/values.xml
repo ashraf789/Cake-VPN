@@ -139,7 +139,7 @@
     <string name="error_reading_config_file">Error reading config file</string>
     <string name="error_rsa_sign">Error signing with Android keystore key %1$s: %2$s</string>
     <string name="export_config_chooser_title">Export configuration file</string>
-    <string name="export_config_title">Shielded Config</string>
+    <string name="export_config_title">Cake Config</string>
     <string name="extracahint">The CA cert is usually returned from the Android keystore. Specify a separate certificate if you get certificate verification errors.</string>
     <string name="faq">FAQ</string>
     <string name="faq_android_clients">Multiple OpenVPN clients for Android exist. The most common ones are OpenVPN for Android (this client), OpenVPN Connect and OpenVPN Settings.&lt;p>The clients can be grouped into two groups: OpenVPN for Android and OpenVPN Connect use the official VPNService API (Android 4.0+) and require no root and OpenVPN Settings which uses root.&lt;p>OpenVPN for Android is an open source client and developed by Arne Schwabe.  It is targeted at more advanced users and offers many settings and the ability to import profiles from files and to configure/change profiles inside the app. The client is based on the community version of OpenVPN. It is based on the OpenVPN 2.x source code. This client can be seen as the semi officially client of the community. &lt;p>OpenVPN Connect is non open source client that is developed by OpenVPN Technologies, Inc. The client is indented to be general use client and more targeted at the average user and allows the import of OpenVPN profiles. This client is based on the OpenVPN C++ reimplementation of the OpenVPN protocol (This was required to allow OpenVPN Technologies, Inc to publish an iOS OpenVPN app). This client is the official client of the OpenVPN technologies &lt;p> OpenVPN Settings is the oldest of the clients and also a UI for the open source OpenVPN. In contrast to OpenVPN  for Android it requires root and does not use the VPNService API. It does not depend on Android 4.0+</string>
@@ -178,12 +178,12 @@
     <string name="help_translate">You can help translating by visiting http://crowdin.net/project/ics-openvpn/invite</string>
     <string name="hours_left">%d hours left</string>
     <string name="hwkeychain">Hardware Keystore:</string>
-    <string name="ics_openvpn_log_file">Shielded log file</string>
+    <string name="ics_openvpn_log_file">Cake log file</string>
     <string name="ignore">Ignore</string>
     <string name="ignore_multicast_route">Ignoring multicast route: %s</string>
     <string name="ignore_routes_summary">Ignore routed pushed by the server.</string>
     <string name="ignored_pushed_routes">Ignore pushed routes</string>
-    <string name="import_config">Import Shielded configuration</string>
+    <string name="import_config">Import Cake configuration</string>
     <string name="import_config_error">Importing the config yielded an error, cannot save it</string>
     <string name="import_configuration_file">Import configuration file</string>
     <string name="import_content_resolve_error">Could not read profile to import</string>
@@ -230,7 +230,7 @@
     <string name="menu_import_short">Import</string>
     <string name="menu_use_inline_data">Use inline data</string>
     <string name="message_no_user_edit">This profile has been added from an external app (%s) and has been marked as not user editable.</string>
-    <string name="minidump_generated">Shielded crashed unexpectedly. Please consider using the send Minidump option in the main menu</string>
+    <string name="minidump_generated">Cake crashed unexpectedly. Please consider using the send Minidump option in the main menu</string>
     <string name="missing_ca_certificate">Missing CA certificate</string>
     <string name="missing_certificates">Missing user certificate or user certifcate key file</string>
     <string name="missing_tlsauth">tls-auth file is missing</string>
@@ -255,7 +255,7 @@
     <string name="no_vpn_profiles_defined">No VPN profiles defined.</string>
     <string name="no_vpn_support_image">Your image does not support the VPNService API, sorry :(</string>
     <string name="nobind_summary">Do not bind to local address and port</string>
-    <string name="notifcation_title">Shielded - %s</string>
+    <string name="notifcation_title">Cake - %s</string>
     <string name="notifcation_title_notconnect">Not connected</string>
     <string name="nought_alwayson_warning"><![CDATA[If you did not get a VPN confirmation dialog, you have \"Always on VPN\" enabled for another app. In that case only that app is allowed to connect to a VPN. Check under Settings-> Networks more .. -> VPNS]]></string>
     <string name="novpn_selected">No VPN selected.</string>
@@ -265,7 +265,7 @@
     <string name="onbootrestartsummary">OpenVPN will connect the specified VPN if it was active on system boot. Please read the connection warning FAQ before using this option on Android &lt; 5.0.</string>
     <string name="opentun_no_ipaddr">Refusing to open tun device without IP information</string>
     <string name="openvpn_is_no_free_vpn">To use this app you need a VPN provider/VPN gateway supporting OpenVPN (often provided by your employer). Check out http://community.openvpn.net/ for more information on OpenVPN and how to setup your own OpenVPN server.</string>
-    <string name="openvpn_log">Shielded Log</string>
+    <string name="openvpn_log">Cake Log</string>
     <string name="override_dns">Override DNS Settings by Server</string>
     <string name="owner_fix">Fix ownership of /dev/tun</string>
     <string name="owner_fix_summary">Tries to set the owner of /dev/tun to system. Some CM9 images need this to make the VPNService API work. Requires root.</string>
@@ -418,7 +418,7 @@
     <string name="vpn_import_hint">Use the &lt;img src=\"ic_menu_archive\"/> icon to import an existing (.ovpn or .conf) profile from your sdcard.</string>
     <string name="vpn_launch_title">Connecting to VPN…</string>
     <string name="vpn_list_title">Profiles</string>
-    <string name="vpn_shortcut">Shielded Shortcut</string>
+    <string name="vpn_shortcut">Cake Shortcut</string>
     <string name="vpn_status">Vpn Status</string>
     <string name="vpn_tethering_title">VPN and Tethering</string>
     <string name="vpn_type">Type</string>
