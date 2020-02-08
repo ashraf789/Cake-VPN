@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\Ashraf-PC\\StudioProjects\\shielded-vpn\\vpnLib\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\Ashraf-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.0.1.aar\\22ea6e83abdafdc85d131d44b8cfef74\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ashraf-PC\\StudioProjects\\shielded-vpn\\vpnLib\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Ashraf-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.0.1.aar\\22ea6e83abdafdc85d131d44b8cfef74\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ashraf-PC\\StudioProjects\\shielded-vpn\\vpnLib\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\Ashraf-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.0.1.aar\\22ea6e83abdafdc85d131d44b8cfef74\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ashraf-PC\\StudioProjects\\shielded-vpn\\vpnLib\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Ashraf-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.0.1.aar\\22ea6e83abdafdc85d131d44b8cfef74\\res\\layout-v21\\notification_template_icon_group.xml"
+    }
+]
