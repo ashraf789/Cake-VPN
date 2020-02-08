@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "C:\\Users\\Ashraf-PC\\StudioProjects\\shielded-vpn\\vpnLib\\build\\intermediates\\res\\merged\\release\\color-v23\\abc_color_highlight_material.xml",
+        "source": "C:\\Users\\Ashraf-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.0.1.aar\\22ea6e83abdafdc85d131d44b8cfef74\\res\\color-v23\\abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ashraf-PC\\StudioProjects\\shielded-vpn\\vpnLib\\build\\intermediates\\res\\merged\\release\\color-v23\\abc_tint_switch_thumb.xml",
+        "source": "C:\\Users\\Ashraf-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.0.1.aar\\22ea6e83abdafdc85d131d44b8cfef74\\res\\color-v23\\abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ashraf-PC\\StudioProjects\\shielded-vpn\\vpnLib\\build\\intermediates\\res\\merged\\release\\color-v23\\abc_tint_seek_thumb.xml",
+        "source": "C:\\Users\\Ashraf-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.0.1.aar\\22ea6e83abdafdc85d131d44b8cfef74\\res\\color-v23\\abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ashraf-PC\\StudioProjects\\shielded-vpn\\vpnLib\\build\\intermediates\\res\\merged\\release\\color-v23\\abc_tint_switch_track.xml",
+        "source": "C:\\Users\\Ashraf-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.0.1.aar\\22ea6e83abdafdc85d131d44b8cfef74\\res\\color-v23\\abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ashraf-PC\\StudioProjects\\shielded-vpn\\vpnLib\\build\\intermediates\\res\\merged\\release\\color-v23\\abc_btn_colored_borderless_text_material.xml",
+        "source": "C:\\Users\\Ashraf-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.0.1.aar\\22ea6e83abdafdc85d131d44b8cfef74\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ashraf-PC\\StudioProjects\\shielded-vpn\\vpnLib\\build\\intermediates\\res\\merged\\release\\color-v23\\abc_tint_edittext.xml",
+        "source": "C:\\Users\\Ashraf-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.0.1.aar\\22ea6e83abdafdc85d131d44b8cfef74\\res\\color-v23\\abc_tint_edittext.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ashraf-PC\\StudioProjects\\shielded-vpn\\vpnLib\\build\\intermediates\\res\\merged\\release\\color-v23\\abc_tint_default.xml",
+        "source": "C:\\Users\\Ashraf-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.0.1.aar\\22ea6e83abdafdc85d131d44b8cfef74\\res\\color-v23\\abc_tint_default.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ashraf-PC\\StudioProjects\\shielded-vpn\\vpnLib\\build\\intermediates\\res\\merged\\release\\color-v23\\abc_tint_spinner.xml",
+        "source": "C:\\Users\\Ashraf-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.0.1.aar\\22ea6e83abdafdc85d131d44b8cfef74\\res\\color-v23\\abc_tint_spinner.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ashraf-PC\\StudioProjects\\shielded-vpn\\vpnLib\\build\\intermediates\\res\\merged\\release\\color-v23\\abc_tint_btn_checkable.xml",
+        "source": "C:\\Users\\Ashraf-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.0.1.aar\\22ea6e83abdafdc85d131d44b8cfef74\\res\\color-v23\\abc_tint_btn_checkable.xml"
+    }
+]

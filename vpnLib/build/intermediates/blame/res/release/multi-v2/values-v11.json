@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\Ashraf-PC\\StudioProjects\\shielded-vpn\\vpnLib\\build\\intermediates\\res\\merged\\release\\values-v11\\values-v11.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Ashraf-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.0.1.aar\\22ea6e83abdafdc85d131d44b8cfef74\\res\\values-v11\\values-v11.xml",
+                    "from": {
+                        "startLines": "2,8,14,20,26,32,38,39,40,41,46,51,56,58,60,61,62,115,169",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,474,899,1327,1753,2180,2605,2694,2795,2898,3306,3726,4148,4255,4384,4455,4538,8477,12559",
+                        "endLines": "7,13,19,25,31,37,38,39,40,45,50,55,57,59,60,61,114,168,169",
+                        "endColumns": "12,12,12,12,12,12,88,100,102,12,12,12,12,12,70,82,12,12,90",
+                        "endOffsets": "469,894,1322,1748,2175,2600,2689,2790,2893,3301,3721,4143,4250,4379,4450,4533,8472,12554,12645"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\Ashraf-PC\\StudioProjects\\shielded-vpn\\vpnLib\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-v11\\values-v11.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Ashraf-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.0.1.aar\\22ea6e83abdafdc85d131d44b8cfef74\\res\\values-v11\\values-v11.xml",
+                    "from": {
+                        "startLines": "2,8,14,20,26,32,38,39,40,41,46,51,56,58,60,61,62,115,169",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,474,899,1327,1753,2180,2605,2694,2795,2898,3306,3726,4148,4255,4384,4455,4538,8477,12559",
+                        "endLines": "7,13,19,25,31,37,38,39,40,45,50,55,57,59,60,61,114,168,169",
+                        "endColumns": "12,12,12,12,12,12,88,100,102,12,12,12,12,12,70,82,12,12,90",
+                        "endOffsets": "469,894,1322,1748,2175,2600,2689,2790,2893,3301,3721,4143,4250,4379,4450,4533,8472,12554,12645"
+                    }
+                }
+            ]
+        }
+    ]
+}
