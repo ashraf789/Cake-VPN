@@ -6,8 +6,8 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="16"
-8-->H:\Programming\CakeVPN\vpnLib\src\main\AndroidManifest.xml
+8-->H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="26" />
-9-->H:\Programming\CakeVPN\vpnLib\src\main\AndroidManifest.xml
+9-->H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
 10
 11</manifest>
