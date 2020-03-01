@@ -40,10 +40,6 @@ import static android.app.Activity.RESULT_OK;
 
 public class MainFragment extends Fragment implements View.OnClickListener, ChangeServer {
 
-    //    private String ovpnServer = "sweden.ovpn";
-//    private String ovpnUserName = "vpn";
-//    private String ovpnUserPassword = "vpn";
-//
     private Server server;
     private CheckInternetConnection connection;
 
@@ -66,6 +62,9 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
         return view;
     }
 
+    /**
+     * Initialize all variable and object
+     */
     private void initializeAll() {
         preference = new SharedPreference(getContext());
         server = preference.getServer();
@@ -75,17 +74,22 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
 
         connection = new CheckInternetConnection();
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter("connectionState"));
-
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         binding.vpnBtn.setOnClickListener(this);
-        isServiceRunning();//checking is vpn already running or not
+
+        // Checking is vpn already running or not
+        isServiceRunning();
         VpnStatus.initLogCache(getActivity().getCacheDir());
     }
 
+    /**
+     * @param v: click listener view
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -95,84 +99,106 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
         }
     }
 
-    //prepare for vpn connect with required permission
+    /**
+     * Prepare for vpn connect with required permission
+     */
     private void prepareVpn() {
         if (!vpnStart) {
             if (getInternetStatus()) {
-                //checking permission for network monitor
+
+                // Checking permission for network monitor
                 Intent intent = VpnService.prepare(getContext());
+
                 if (intent != null) {
                     startActivityForResult(intent, 1);
                 } else startVpn();//have already permission
+
+                // Update confection status
                 status("connecting");
 
             } else {
+
+                // No internet connection available
                 showToast("you have no internet connection !!");
             }
 
         } else if (stopVpn()) {
 
+            // VPN is stopped, show a Toast message.
             showToast("Disconnect Successfully");
         }
     }
 
     /**
      * Stop vpn
-     *
-     * @return boolean
+     * @return boolean: VPN status
      */
     public boolean stopVpn() {
         try {
             vpnThread.stop();
+
             status("connect");
             vpnStart = false;
             return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
 
+        return false;
     }
 
-    //taking permission for network access
+    /**
+     * Taking permission for network access
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            startVpn();
 
+        if (resultCode == RESULT_OK) {
+
+            //Permission granted, start the VPN
+            startVpn();
         } else {
             showToast("Permission Deny !! ");
         }
     }
 
-    // internet connection status.
+    /**
+     * Internet connection status.
+     */
     public boolean getInternetStatus() {
         return connection.netCheck(getContext());
     }
 
-
-    // checking is service is connected
+    /**
+     * Get service status
+     */
     public void isServiceRunning() {
         setStatus(vpnService.getStatus());
     }
 
-    // if all reburied permission is granted then start vpn
+    /**
+     * Start the VPN
+     */
     private void startVpn() {
         try {
-
-            InputStream conf = getActivity().getAssets().open(server.getOvpn());// .ovpn file
+            // .ovpn file
+            InputStream conf = getActivity().getAssets().open(server.getOvpn());
             InputStreamReader isr = new InputStreamReader(conf);
             BufferedReader br = new BufferedReader(isr);
             String config = "";
             String line;
+
             while (true) {
                 line = br.readLine();
                 if (line == null) break;
                 config += line + "\n";
             }
+
             br.readLine();
             OpenVpnApi.startVpn(getContext(), config, server.getOvpnUserName(), server.getOvpnUserPassword());
+
+            // Update log
             binding.logTv.setText("Connecting...");
 
         } catch (IOException | RemoteException e) {
@@ -180,8 +206,10 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
         }
     }
 
-
-    //status change with corresponding vpn connection status
+    /**
+     * Status change with corresponding vpn connection status
+     * @param connectionState
+     */
     public void setStatus(String connectionState) {
         switch (connectionState) {
             case "DISCONNECTED":
@@ -213,7 +241,10 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
 
     }
 
-    //it will change button background color and text
+    /**
+     * Change button background color and text
+     * @param status: VPN current status
+     */
     public void status(String status) {
 
         if (status.equals("connect")) {
@@ -242,14 +273,16 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
 
     }
 
-    // receiving broadcast message
+    /**
+     * Receive broadcast message
+     */
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             try {
                 setStatus(intent.getStringExtra("state"));
             } catch (Exception e) {
-                //when sendMessage(String state) call this method will be called
+                e.printStackTrace();
             }
 
             try {
@@ -265,12 +298,19 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
                 if (byteOut.equals(null)) byteOut = " ";
                 updateConnectionStatus(duration, lastPacketReceive, byteIn, byteOut);
             } catch (Exception e) {
-                //when sendMessage(String val,String val,..) called then it will be called
+                e.printStackTrace();
             }
 
         }
     };
 
+    /**
+     * Update status UI
+     * @param duration: running time
+     * @param lastPacketReceive: last packet receive time
+     * @param byteIn: incoming data
+     * @param byteOut: outgoing data
+     */
     public void updateConnectionStatus(String duration, String lastPacketReceive, String byteIn, String byteOut) {
         binding.durationTv.setText("Duration: " + duration);
         binding.lastPacketReceiveTv.setText("Packet Received: " + lastPacketReceive + " second ago");
@@ -278,11 +318,18 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
         binding.byteOutTv.setText("Bytes Out: " + byteOut);
     }
 
-    // show toast message
+    /**
+     * Show toast message
+     * @param message: toast message
+     */
     public void showToast(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * VPN server country icon change
+     * @param serverIcon: icon URL
+     */
     public void updateCurrentServerIcon(String serverIcon) {
         Glide.with(getContext())
                 .load(serverIcon)
@@ -291,7 +338,6 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
 
     /**
      * Change server when user select new server
-     *
      * @param server ovpn server details
      */
     @Override
