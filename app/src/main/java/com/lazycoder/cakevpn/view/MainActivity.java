@@ -42,10 +42,10 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initializeAll();//initialize all variable
+        // Initialize all variable
+        initializeAll();
 
         ImageButton menuRight = findViewById(R.id.navbar_right);
-
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -92,6 +92,9 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
 
     }
 
+    /**
+     * Close navigation drawer
+     */
     public void closeDrawer(){
         if (drawer.isDrawerOpen(GravityCompat.END)) {
             drawer.closeDrawer(GravityCompat.END);
@@ -135,11 +138,9 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
         return servers;
     }
 
-
-
     /**
-     * On navigation item click this
-     * @param index
+     * On navigation item click, close drawer and change server
+     * @param index: server index
      */
     @Override
     public void clickedItem(int index) {
