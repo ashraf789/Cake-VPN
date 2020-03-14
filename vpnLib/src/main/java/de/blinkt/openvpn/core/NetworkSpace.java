@@ -5,11 +5,9 @@
 package de.blinkt.openvpn.core;
 
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
-
-import junit.framework.Assert;
-
 import java.math.BigInteger;
 import java.net.Inet6Address;
 import java.util.Collection;
@@ -19,6 +17,8 @@ import java.util.TreeSet;
 import java.util.Vector;
 
 import de.blinkt.openvpn.BuildConfig;
+
+import static android.content.ContentValues.TAG;
 
 public class NetworkSpace {
     TreeSet<ipAddress> mIpAddresses = new TreeSet<ipAddress>();
@@ -58,7 +58,7 @@ public class NetworkSpace {
         while (currentNet != null) {
             // Check if it and the next of it are compatible
             ipAddress nextNet = networks.poll();
-            if (BuildConfig.DEBUG) Assert.assertNotNull(currentNet);
+            if (BuildConfig.DEBUG) Log.i(TAG, "generateIPList: "+currentNet);;
             if (nextNet == null || currentNet.getLastAddress().compareTo(nextNet.getFirstAddress()) == -1) {
                 // Everything good, no overlapping nothing to do
                 ipsDone.add(currentNet);
@@ -77,7 +77,9 @@ public class NetworkSpace {
                         // First add the second half to keep the order in networks
                         if (!networks.contains(newNets[1])) networks.add(newNets[1]);
                         if (newNets[0].getLastAddress().equals(currentNet.getLastAddress())) {
-                            if (BuildConfig.DEBUG) Assert.assertEquals(newNets[0].networkMask, currentNet.networkMask);
+                            if (BuildConfig.DEBUG) {
+                                Log.i(TAG, "generateIPList: "+newNets[0].networkMask+", "+currentNet.networkMask);
+                            }
                             // Don't add the lower half that would conflict with currentNet
                         } else {
                             if (!networks.contains(newNets[0])) networks.add(newNets[0]);
@@ -86,9 +88,9 @@ public class NetworkSpace {
                     }
                 } else {
                     if (BuildConfig.DEBUG) {
-                        Assert.assertTrue(currentNet.networkMask < nextNet.networkMask);
-                        Assert.assertTrue(nextNet.getFirstAddress().compareTo(currentNet.getFirstAddress()) == 1);
-                        Assert.assertTrue(currentNet.getLastAddress().compareTo(nextNet.getLastAddress()) != -1);
+                        Log.i(TAG, "generateIPList: "+(currentNet.networkMask < nextNet.networkMask));
+                        Log.i(TAG, "generateIPList: "+(nextNet.getFirstAddress().compareTo(currentNet.getFirstAddress()) == 1));
+                        Log.i(TAG, "generateIPList: "+(currentNet.getLastAddress().compareTo(nextNet.getLastAddress()) != -1));
                     }
                     // This network is bigger than the next and last ip of current >= next
                     //noinspection StatementWithEmptyBody
@@ -100,8 +102,8 @@ public class NetworkSpace {
                         ipAddress[] newNets = currentNet.split();
                         if (newNets[1].networkMask == nextNet.networkMask) {
                             if (BuildConfig.DEBUG) {
-                                Assert.assertTrue(newNets[1].getFirstAddress().equals(nextNet.getFirstAddress()));
-                                Assert.assertTrue(newNets[1].getLastAddress().equals(currentNet.getLastAddress()));
+                                Log.i(TAG, "generateIPList: "+newNets[1].getFirstAddress().equals(nextNet.getFirstAddress()));
+                                Log.i(TAG, "generateIPList: "+newNets[1].getLastAddress().equals(currentNet.getLastAddress()));
                                 // split second equal the next network, do not add it
                             }
                             networks.add(nextNet);
@@ -241,22 +243,26 @@ public class NetworkSpace {
         public ipAddress[] split() {
             ipAddress firstHalf = new ipAddress(getFirstAddress(), networkMask + 1, included, isV4);
             ipAddress secondHalf = new ipAddress(firstHalf.getLastAddress().add(BigInteger.ONE), networkMask + 1, included, isV4);
-            if (BuildConfig.DEBUG) Assert.assertTrue(secondHalf.getLastAddress().equals(getLastAddress()));
+            if (BuildConfig.DEBUG) {
+                Log.i(TAG, "generateIPList: "+secondHalf.getLastAddress().equals(getLastAddress()));
+            }
             return new ipAddress[]{firstHalf, secondHalf};
         }
 
         String getIPv4Address() {
             if (BuildConfig.DEBUG) {
-                Assert.assertTrue(isV4);
-                Assert.assertTrue(netAddress.longValue() <= 0xffffffffl);
-                Assert.assertTrue(netAddress.longValue() >= 0);
+                Log.i(TAG, "generateIPList: "+isV4);
+                Log.i(TAG, "generateIPList: "+(netAddress.longValue() <= 0xffffffffl));
+                Log.i(TAG, "generateIPList: "+(netAddress.longValue() >= 0));
             }
             long ip = netAddress.longValue();
             return String.format(Locale.US, "%d.%d.%d.%d", (ip >> 24) % 256, (ip >> 16) % 256, (ip >> 8) % 256, ip % 256);
         }
 
         String getIPv6Address() {
-            if (BuildConfig.DEBUG) Assert.assertTrue(!isV4);
+            if (BuildConfig.DEBUG) {
+                Log.i(TAG, "generateIPList: "+!isV4);
+            }
             BigInteger r = netAddress;
             String ipv6str = null;
             boolean lastPart = true;

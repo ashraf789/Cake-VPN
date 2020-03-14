@@ -1809,7 +1809,7 @@ int styleable FontFamily_fontProviderFetchStrategy 2
 int styleable FontFamily_fontProviderFetchTimeout 3
 int styleable FontFamily_fontProviderPackage 4
 int styleable FontFamily_fontProviderQuery 5
-int[] styleable FontFamilyFont { 0x1010532, 0x101053f, 0x0, 0x1010533, 0x0, 0x7f040074, 0x7f04007c, 0x7f04007d, 0x7f04007e, 0x7f040104 }
+int[] styleable FontFamilyFont { 0x1010532, 0x101053f, 0x1010570, 0x1010533, 0x101056f, 0x7f040074, 0x7f04007c, 0x7f04007d, 0x7f04007e, 0x7f040104 }
 int styleable FontFamilyFont_android_font 0
 int styleable FontFamilyFont_android_fontStyle 1
 int styleable FontFamilyFont_android_fontVariationSettings 2
