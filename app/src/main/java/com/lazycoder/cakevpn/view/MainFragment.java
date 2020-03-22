@@ -2,6 +2,7 @@ package com.lazycoder.cakevpn.view;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.VpnService;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -94,9 +96,36 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.vpnBtn:
-                prepareVpn();
-                return;
+                // Vpn is running, user would like to disconnect current connection.
+                if (vpnStart) {
+                    confirmDisconnect();
+                }else {
+                    prepareVpn();
+                }
         }
+    }
+
+    /**
+     * Show show disconnect confirm dialog
+     */
+    public void confirmDisconnect(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage("Would you like to cancel the current VPN Connection?");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                stopVpn();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+
+        // Create the AlertDialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     /**
@@ -200,6 +229,7 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
 
             // Update log
             binding.logTv.setText("Connecting...");
+            vpnStart = true;
 
         } catch (IOException | RemoteException e) {
             e.printStackTrace();
