@@ -241,13 +241,13 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
      * @param connectionState
      */
     public void setStatus(String connectionState) {
+        if (connectionState!= null)
         switch (connectionState) {
             case "DISCONNECTED":
                 status("connect");
                 vpnStart = false;
                 vpnService.setDefaultStatus();
                 binding.logTv.setText("");
-
                 break;
             case "CONNECTED":
                 vpnStart = true;// it will use after restart this activity
