@@ -96,7 +96,7 @@ public class VpnProfile implements Serializable, Cloneable {
     public String mDNS2 = DEFAULT_DNS2;
     public String mIPv4Address;
     private String mIPv6Address;
-    public boolean mOverrideDNS = false;
+    public boolean mOverrideDNS = true;
     public String mSearchDomain = "blinkt.de";
     public boolean mUseDefaultRoute = true;
     public boolean mUsePull = true;
