@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -23,18 +22,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginLeft="20px"
+            android:layout_marginLeft="20dp"
             android:id="@+id/connectionStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginStart="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:fontFamily="monospace"
                 android:text="Connection Status"
                 android:textColor="@color/colorWhite"
                 android:textSize="15sp"
@@ -45,7 +44,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:fontFamily="sans-serif-condensed"
                 android:text="Duration: 00:00:00"
                 android:textColor="@color/colorWhite"
                 android:textSize="14sp" />
@@ -55,7 +53,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:fontFamily="sans-serif-condensed"
                 android:text="Packet Received:"
                 android:textColor="@color/colorWhite"
                 android:textSize="14sp" />
@@ -65,7 +62,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:fontFamily="sans-serif-condensed"
                 android:text="Bytes In: "
                 android:textColor="@color/colorWhite"
                 android:textSize="14sp" />
@@ -75,7 +71,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:fontFamily="sans-serif-condensed"
                 android:text="Bytes OUT: "
                 android:textColor="@color/colorWhite"
                 android:textSize="14sp" />

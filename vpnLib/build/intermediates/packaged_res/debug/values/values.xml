@@ -1,9 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="auth_retry_type">
+        <item>Disconnect, forget password</item>
+        <item>Disconnect, keep password</item>
+        <item>Ignore, retry</item>
+    </string-array>
+    <string-array name="crm_entries">
+        <item>No reconnection retries</item>
+        <item>One reconnection retry</item>
+        <item>Five reconnection retries</item>
+        <item>Fifty reconnection retries</item>
+        <item>Unlimited reconnection retries</item>
+    </string-array>
+    <string-array name="crm_values" translatable="false">
+        <item>1</item>
+        <item>2</item>
+        <item>5</item>
+        <item>50</item>
+        <item>-1</item>
+    </string-array>
+    <string-array name="tls_directions_entries">
+        <item translatable="false">0</item>
+        <item translatable="false">1</item>
+        <item>Unspecified</item>
+        <item>Encryption (--tls-crypt)</item>
+        <item>TLS Crypt V2</item>
+    </string-array>
+    <string-array name="tls_directions_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item/>
+        <item>tls-crypt</item>
+        <item>tls-crypt-v2</item>
+    </string-array>
+    <string-array name="vpn_types">
+        <item>Certificates</item>
+        <item>PKCS12 File</item>
+        <item>Android Certificate</item>
+        <item>Username/Password</item>
+        <item>Static Keys</item>
+        <item>User/PW + Certificates</item>
+        <item>User/PW + PKCS12 </item>
+        <item>User/PW + Android</item>
+        <item>External Auth Provider</item>
+    </string-array>
+    <bool name="logSildersAlwaysVisible">false</bool>
+    <bool name="supportFileScheme">true</bool>
+    <color name="accent">#FFA726</color>
+    <color name="background_tab_pressed">#1AFFFFFF</color>
+    <color name="dataIn">#ff0000</color>
+    <color name="dataOut">#0000ff</color>
+    <color name="gelb">#ffff00</color>
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#303F9F</color>
+    <color name="rot">#ff0000</color>
+    <color name="switchbar">@android:color/darker_gray</color>
+    <dimen name="add_button_margin">16dp</dimen>
+    <dimen name="add_button_margin_topfab">96dp</dimen>
+    <dimen name="diameter">48dp</dimen>
+    <dimen name="elevation_high">4dp</dimen>
+    <dimen name="elevation_low">1dp</dimen>
+    <dimen name="paddingItemsSidebarLog">20dp</dimen>
+    <dimen name="round_button_diameter">56dp</dimen>
+    <dimen name="stdpadding">8dp</dimen>
+    <dimen name="switchbar_pad">16dp</dimen>
+    <dimen name="vpn_setting_padding">16dp</dimen>
     <drawable name="ic_menu_close_clear_cancel">@android:drawable/ic_menu_close_clear_cancel</drawable>
     <drawable name="ic_menu_pause">@android:drawable/ic_media_pause</drawable>
     <drawable name="ic_menu_play">@android:drawable/ic_media_play</drawable>
+    <plurals name="days_left">
+        <item quantity="one">One day left</item>
+        <item quantity="other">%d days left</item>
+    </plurals>
+    <plurals name="hours_left">
+        <item quantity="one">One hour left</item>
+        <item quantity="other">%d hours left</item>
+    </plurals>
+    <plurals name="minutes_left">
+        <item quantity="one">One minute left</item>
+        <item quantity="other">%d minutes left</item>
+    </plurals>
+    <plurals name="months_left">
+        <item quantity="one">One month left</item>
+        <item quantity="other">%d months left</item>
+    </plurals>
     <string name="Search">Search</string>
+    <string name="Use_no_proxy">None</string>
     <string name="ab_kitkat_mss">Early KitKat version set the wrong MSS value on TCP connections (#61948). Try to enable the mssfix option to workaround this bug.</string>
     <string name="ab_kitkat_mss_title">Wrong MSS value for VPN connection</string>
     <string name="ab_kitkat_reconnect">"Multiple users report that the mobile connection/mobile data connection is frequently dropped while using the VPN app. The behaviour seems to affect only some mobile provider/device combination and so far no cause/workaround for the bug could be identified. "</string>
@@ -33,23 +115,40 @@
     <string name="address">Server Address:</string>
     <string name="advanced">Advanced</string>
     <string name="advanced_settings">Advanced Settings</string>
+    <string name="all_app_prompt">An external app tries to control %s. The app requesting access cannot be determined. Allowing this app grants ALL apps access.</string>
     <string name="allow_vpn_changes">Allow changes to VPN Profiles</string>
     <string name="allowed_apps">Allowed apps: %s</string>
     <string name="allowed_vpn_apps_info">Allowed VPN apps: %1$s</string>
-    <string name="alwaysonvpn">VPN used on boot and for Always-On</string>
-    <string name="app">Cake Vpn</string>
+    <string name="app">OpenVPN for Android</string>
     <string name="app_no_longer_exists">Package %s is no longer installed, removing it from app allow/disallow list</string>
     <string name="appbehaviour">Application behaviour</string>
+    <string name="apprest_name">Name</string>
+    <string name="apprest_name_desc">Name of the VPN profile</string>
+    <string name="apprest_ovpn">Config</string>
+    <string name="apprest_ovpn_desc">Content of the OpenVPN configuration file. These files are usually have the extension .ovpn (sometimes also .conf) and are plain text multi line configuration files. If your MDM does not support multiline configuration entries, you can also use a base64 encoded string here. A text file can be converted to base64 using openssl base64 -A -in</string>
+    <string name="apprest_uuid">UUID</string>
+    <string name="apprest_uuid_desc">Unique UUID that identifies the profile (example:
+        0E910C15–9A85-4DD9-AE0D-E6862392E638). Generate using uuidgen or similar tools
+    </string>
+    <string name="apprest_ver">Version of the managed configuration schema (Currently always 1)</string>
+    <string name="apprest_vpnconf">VPN configuration</string>
+    <string name="apprest_vpnlist">List of VPN configurations</string>
+    <string name="as_servername">AS servername</string>
     <string name="auth_dialog_message">Enter the authentication digest used for OpenVPN. Leave empty to use default digest.</string>
     <string name="auth_dialog_title">Enter packet authentication method</string>
+    <string name="auth_failed_behaviour">Behaviour on AUTH_FAILED</string>
     <string name="auth_pwquery">Password</string>
     <string name="auth_username">Username</string>
+    <string name="avghour">Average per hour</string>
+    <string name="avgmin">Average per minute</string>
     <string name="backup_dns">Backup DNS Server</string>
     <string name="basic">Basic</string>
-    <string name="baterry_consumption">In my personal tests the main reason for high battery consumption of OpenVPN are the keepalive packets. Most OpenVPN servers have a configuration directive like \'keepalive 10 60\' which causes the client and server to exchange keepalive packets every ten seconds. &lt;p> While these packets are small and do not use much traffic, they keep the mobile radio network busy and increase the energy consumption. (See also &lt;a href="http://developer.android.com/training/efficient-downloads/efficient-network-access.html#RadioStateMachine">The Radio State Machine | Android Developers&lt;/a>) &lt;p> This keepalive setting cannot be changed on the client. Only the system administrator of the OpenVPN can change the setting. &lt;p> Unfortunately using a keepalive larger than 60 seconds with UDP can cause some NAT gateways to drop the connection due to an inactivity timeout. Using TCP with a long keep alive timeout works, but tunneling TCP over TCP performs extremely poorly on connections with high packet loss. (See &lt;a href="http://sites.inka.de/bigred/devel/tcp-tcp.html">Why TCP Over TCP Is A Bad Idea&lt;/a>)</string>
+    <string name="baterry_consumption">In my personal tests the main reason for high battery consumption of OpenVPN are the keepalive packets. Most OpenVPN servers have a configuration directive like \'keepalive 10 60\' which causes the client and server to exchange keepalive packets every ten seconds. &lt;p> While these packets are small and do not use much traffic, they keep the mobile radio network busy and increase the energy consumption. (See also &lt;a href="https://developer.android.com/training/efficient-downloads/efficient-network-access.html#RadioStateMachine">The Radio State Machine | Android Developers&lt;/a>) &lt;p> This keepalive setting cannot be changed on the client. Only the system administrator of the OpenVPN can change the setting. &lt;p> Unfortunately using a keepalive larger than 60 seconds with UDP can cause some NAT gateways to drop the connection due to an inactivity timeout. Using TCP with a long keep alive timeout works, but tunneling TCP over TCP performs extremely poorly on connections with high packet loss. (See &lt;a href="http://sites.inka.de/bigred/devel/tcp-tcp.html">Why TCP Over TCP Is A Bad Idea&lt;/a>)</string>
     <string name="battery_consumption_title">Battery consumption</string>
-    <string name="blocklocal_summary">Networks directly connected to the local interfaces will not be routed over the VPN. Deselecting this option will redirect all traffic intented for local networks to the VPN.</string>
+    <string name="bits_per_second">%.0f bit/s</string>
+    <string name="blocklocal_summary">Networks directly connected to the local interfaces will not be routed over the VPN. Deselecting this option will redirect all traffic indented for local networks to the VPN.</string>
     <string name="blocklocal_title">Bypass VPN for local networks</string>
+    <string name="bouncy_castle" translatable="false">Bouncy Castle Crypto APIs</string>
     <string name="broken_image_cert">Got an exception trying to show the Android 4.0+ certificate selection dialog. This should never happen as this a standard feature of Android 4.0+. Maybe your Android ROM support for certificate storage is broken</string>
     <string name="broken_image_cert_title">Error showing certificate selection</string>
     <string name="broken_images">Broken Images</string>
@@ -64,6 +163,14 @@
     <string name="cannotparsecert">Cannot display certificate information</string>
     <string name="cant_read_folder">Unable to read directory</string>
     <string name="change_sorting">Change sorting</string>
+    <string name="channel_description_background">Ongoing statistics of the established OpenVPN connection</string>
+    <string name="channel_description_status">Status changes of the OpenVPN connection (Connecting, authenticating,…)</string>
+    <string name="channel_description_userreq">OpenVPN connection requires a user input, e.g. two factor
+        authentification
+    </string>
+    <string name="channel_name_background">Connection statistics</string>
+    <string name="channel_name_status">Connection status change</string>
+    <string name="channel_name_userreq">User interaction required</string>
     <string name="check_remote_tlscert">Checks whether the server uses a certificate with TLS Server extensions (--remote-cert-tls server)</string>
     <string name="check_remote_tlscert_title">Expect TLS server certificate</string>
     <string name="chipher_dialog_message">Enter the encryption cipher algorithm used by OpenVPN. Leave empty to use default cipher.</string>
@@ -81,6 +188,7 @@
     <string name="complete_dn">Complete DN</string>
     <string name="config_error_found">Error in Configuration</string>
     <string name="configuration_changed">Configuration changed</string>
+    <string name="configure">Configure</string>
     <string name="configure_the_vpn">Configure the VPN</string>
     <string name="connect_timeout">Connect Timeout</string>
     <string name="connection_retries">Connection retries</string>
@@ -93,11 +201,28 @@
     <string name="copied_entry">Copied log entry to clip board</string>
     <string name="copy_of_profile">Copy of %s</string>
     <string name="copying_log_entries">Copying log entries</string>
+    <string name="copyright_blinktgui" translatable="false">Copyright 2012–2018 Arne Schwabe &lt;arne@rfc2549.org>
+    </string>
+    <string name="copyright_bouncycastle" translatable="false">Copyright © 2000–2012 The Legion Of The Bouncy Castle
+        (http://www.bouncycastle.org)
+    </string>
+    <string name="copyright_file_dialog" translatable="false">File Dialog based on work by Alexander Ponomarev</string>
     <string name="copyright_guicode">Source code and issue tracker available at https://github.com/schwabe/ics-openvpn/</string>
+    <string name="copyright_logo" translatable="false">App Logo design by Helen Beierling
+        &lt;helbeierling@t-online.de>
+    </string>
+    <string name="copyright_openssl" translatable="false">This product includes software developed by the OpenSSL
+        Project for use in the OpenSSL Toolkit\n
+        Copyright © 1998-2008 The OpenSSL Project. All rights reserved.\n\n
+        This product includes cryptographic software written by Eric Young (eay@cryptsoft.com)\n
+        Copyright © 1995-1998 Eric Young (eay@cryptsoft.com) All rights reserved.
+    </string>
     <string name="copyright_others">This program uses the following components; see the source code for full details on the licenses</string>
+    <string name="crash_toast_text">OpenVPN for Android crashed, crash reported</string>
     <string name="crashdump">Crashdump</string>
     <string name="crl_file">Certificate Revocation List</string>
     <string name="crl_title">Certifcate Revoke List (optional)</string>
+    <string name="crtext_requested">Answer challenge to continue VPN authentication</string>
     <string name="custom_config_summary">Specify custom options. Use with care!</string>
     <string name="custom_config_title">Enable Custom Options</string>
     <string name="custom_connection_options">Custom Options</string>
@@ -109,9 +234,15 @@
     <string name="custom_route_message_excluded">Routes that should NOT be routed over the VPN. Use the same syntax as for included routes.</string>
     <string name="custom_routes_title">Custom Routes</string>
     <string name="custom_routes_title_excluded">Excluded Networks</string>
-    <string name="days_left">%d days left</string>
+    <string name="data_in">In</string>
+    <string name="data_out">Out</string>
     <string name="debug_build">debug build</string>
+    <string name="default_cipherlist_test" translatable="false">aes-256-gcm bf-cbc sha1</string>
     <string name="default_route_summary">Redirects all Traffic over the VPN</string>
+    <string name="defaultport" translatable="false">1194</string>
+    <string name="defaultserver" translatable="false">openvpn.uni-paderborn.de</string>
+    <string name="defaultvpn">Default VPN</string>
+    <string name="defaultvpnsummary">VPN used in places where a default VPN needed. These are currently on boot, for Always-On and the Quick Settings Tile.</string>
     <string name="delete">Delete</string>
     <string name="deprecated_tls_remote">Config uses option tls-remote that was deprecated in 2.3 and finally removed in 2.4</string>
     <string name="device_specific">Device specifics Hacks</string>
@@ -130,16 +261,21 @@
     <string name="edit_profile_title">Editing \"%s\"</string>
     <string name="edit_vpn">Edit VPN Settings</string>
     <string name="enabled_connection_entry">Enabled</string>
+    <string name="enableproxyauth">Enable Proxy Authentication</string>
     <string name="encryption">Encryption</string>
     <string name="encryption_cipher">Encryption cipher</string>
     <string name="enter_tlscn_dialog">Specify the check used to verify the remote certificate DN (e.g. C=DE, L=Paderborn, OU=Avian IP Carriers, CN=openvpn.blinkt.de)\n\nSpecify the complete DN or the RDN (openvpn.blinkt.de in the example) or an RDN prefix for verification.\n\nWhen using RDN prefix \"Server\" matches \"Server-1\" and \"Server-2\"\n\nLeaving the text field empty will check the RDN against the server hostname.\n\nFor more details see the OpenVPN 2.3.1+ manpage under —verify-x509-name</string>
     <string name="enter_tlscn_title">Remote certificate subject</string>
     <string name="error">"Error: "</string>
+    <string name="error_extapp_sign">Error signing with external authenticator app (%3$s): %1$s: %2$s</string>
     <string name="error_importing_file">Error importing File</string>
+    <string name="error_orbot_and_proxy_options">Cannot use extra http-proxy-option statement and Orbot integration at the same time</string>
     <string name="error_reading_config_file">Error reading config file</string>
     <string name="error_rsa_sign">Error signing with Android keystore key %1$s: %2$s</string>
     <string name="export_config_chooser_title">Export configuration file</string>
-    <string name="export_config_title">Cake Config</string>
+    <string name="export_config_title">ICS Openvpn Config</string>
+    <string name="extauth_not_configured">External Authneticator not configured</string>
+    <string name="external_authenticator">External Authenticator</string>
     <string name="extracahint">The CA cert is usually returned from the Android keystore. Specify a separate certificate if you get certificate verification errors.</string>
     <string name="faq">FAQ</string>
     <string name="faq_android_clients">Multiple OpenVPN clients for Android exist. The most common ones are OpenVPN for Android (this client), OpenVPN Connect and OpenVPN Settings.&lt;p>The clients can be grouped into two groups: OpenVPN for Android and OpenVPN Connect use the official VPNService API (Android 4.0+) and require no root and OpenVPN Settings which uses root.&lt;p>OpenVPN for Android is an open source client and developed by Arne Schwabe.  It is targeted at more advanced users and offers many settings and the ability to import profiles from files and to configure/change profiles inside the app. The client is based on the community version of OpenVPN. It is based on the OpenVPN 2.x source code. This client can be seen as the semi officially client of the community. &lt;p>OpenVPN Connect is non open source client that is developed by OpenVPN Technologies, Inc. The client is indented to be general use client and more targeted at the average user and allows the import of OpenVPN profiles. This client is based on the OpenVPN C++ reimplementation of the OpenVPN protocol (This was required to allow OpenVPN Technologies, Inc to publish an iOS OpenVPN app). This client is the official client of the OpenVPN technologies &lt;p> OpenVPN Settings is the oldest of the clients and also a UI for the open source OpenVPN. In contrast to OpenVPN  for Android it requires root and does not use the VPNService API. It does not depend on Android 4.0+</string>
@@ -151,6 +287,10 @@
     <string name="faq_howto">&lt;p>Get a working config (tested on your computer or download from your provider/organisation)&lt;/p>&lt;p>If it is a single file with no extra pem/pkcs12 files you can email the file yourself and open the attachment. If you have multiple files put them on your sd card.&lt;/p>&lt;p>Click on the email attachment/Use the folder icon in the vpn list to import the config file&lt;/p>&lt;p>If there are errors about missing files put the missing files on your sd card.&lt;/p>&lt;p>Click on the save symbol to add the imported VPN to your VPN list&lt;/p>&lt;p>Connect the VPN by clicking on the name of the VPN&lt;/p>&lt;p>If there are error or warnings in the log try to understand the warnings/error and try to fix them&lt;/p> </string>
     <string name="faq_howto_shortcut">You can place a shortcut to start OpenVPN on your desktop. Depending on your homescreen program you will have to add either a shortcut or a widget.</string>
     <string name="faq_howto_title">Quick Start</string>
+    <string name="faq_killswitch">It is often desired to block connections without VPN. Other apps often use markting terms like \"Killswitch\" or \"Seamless tunnel\" for this feature. OpenVPN and this app offer persist-tun, a feature to implement this functionality.&lt;p>The problem with all these methods offered by apps is that they can only provide best effort and are no complete solutions. On boot, app crashing and other corner cases the app cannot ensure that this block of non VPN connection works. Thus giving the user a false sense of security.&lt;p>The &lt;b>only&lt;/b> reliable way to ensure non VPN connections are blocked is to use Android 8.0 or later and use the \"block connections without VPN\" setting that can be found under Settings > Network &amp; Internet > Advanced/VPN > OpenVPN for Android > Enable Always ON VPN, Enable Block Connections without VPN</string>
+    <string name="faq_killswitch_title">Block non VPN connection (\"Killswitch\")</string>
+    <string name="faq_remote_api">OpenVPN for Android supports two remote APIs, a sophisticated API using AIDL (remoteEXample in the git repository) and a simple one using Intents. &lt;p>Examples using adb shell and the intents. Replace profilname with your profile name&lt;p>&lt;p> adb shell am start-activity -a android.intent.action.MAIN de.blinkt.openvpn/.api.DisconnectVPN&lt;p> adb shell am start-activity -a android.intent.action.MAIN -e de.blinkt.openvpn.api.profileName Blinkt de.blinkt.openvpn/.api.ConnectVPN</string>
+    <string name="faq_remote_api_title">Remote API</string>
     <string name="faq_routing">The Routing and interface configuration is not done via traditional ifconfig/route commands but by using the VPNService API. This results in a different routing configuration than on other OSes. \nThe configuration of the VPN tunnel consists of the IP address and the networks that should be routed over this interface. Especially, no peer partner address or gateway address is needed or required. Special routes to reach the VPN Server (for example added when using redirect-gateway) are not needed either. The application will consequently ignore these settings when importing a configuration. The app ensures with the VPNService API that the connection to the server is not routed through the VPN tunnel.\nThe VPNService API does not allow specifying networks that should not be routed via the VPN. As a workaround the app tries to detect networks that should not be routed over tunnel (e.g. route x.x.x.x y.y.y.y net_gateway) and calculates a set of routes that excludes this routes to emulate the behaviour of other platforms. The log windows shows the configuration of the VPNService upon establishing a connection.\nBehind the scenes: Android 4.4+ does use policy routing. Using route/ifconfig will not show the installed routes. Instead use ip rule, iptables -t mangle -L</string>
     <string name="faq_routing_title">Routing/Interface Configuration</string>
     <string name="faq_security">"As OpenVPN is security sensitive a few notes about security are sensible. All data on the sdcard is inherently insecure. Every app can read it (for example this program requires no special sd card rights). The data of this application can only be read by the application itself. By using the import option for cacert/cert/key in the file dialog the data is stored in the VPN profile. The VPN profiles are only accessible by this application. (Do not forget to delete the copies on the sd card afterwards). Even though accessible only by this application the data is still unencrypted. By rooting the telephone or other exploits it may be possible to retrieve the data. Saved passwords are stored in plain text as well. For pkcs12 files it is highly recommended that you import them into the android keystore."</string>
@@ -163,6 +303,7 @@
     <string name="faq_tethering">The Android Tethering feature (over WiFi, USB or Bluetooth) and the VPNService API (used by this program) do not work together. For more details see the &lt;a href=\"https://github.com/schwabe/ics-openvpn/issues/34\">issue #34&lt;/a></string>
     <string name="faq_vpndialog43">"Starting with Android 4.3 the VPN confirmation is guarded against \"overlaying apps\". This results in the dialog not reacting to touch input. If you have an app that uses overlays it may cause this behaviour. If you find an offending app contact the author of the app. This problem affect all VPN applications on Android 4.3 and later. See also &lt;a href=\"https://github.com/schwabe/ics-openvpn/issues/185\">Issue 185&lt;a> for additional details"</string>
     <string name="faq_vpndialog43_title">Vpn Confirmation Dialog</string>
+    <string name="file_dialog" translatable="false">File Dialog</string>
     <string name="file_explorer_tab">File Explorer</string>
     <string name="file_icon">file icon</string>
     <string name="file_nothing_selected">You must select a file</string>
@@ -171,33 +312,38 @@
     <string name="float_summary">Allows authenticated packets from any IP</string>
     <string name="float_title">Allow floating server</string>
     <string name="full_licenses">Full licenses</string>
+    <string name="gbits_per_second">%.1f Gbit/s</string>
     <string name="generalsettings">Settings</string>
     <string name="generated_config">Generated Config</string>
     <string name="generated_config_summary">Shows the generated OpenVPN Configuration File</string>
     <string name="getproxy_error">Error getting proxy settings: %s</string>
-    <string name="help_translate">You can help translating by visiting http://crowdin.net/project/ics-openvpn/invite</string>
-    <string name="hours_left">%d hours left</string>
+    <string name="graph">Graph</string>
+    <string name="help_translate">You can help translating by visiting https://crowdin.net/project/ics-openvpn/invite</string>
     <string name="hwkeychain">Hardware Keystore:</string>
-    <string name="ics_openvpn_log_file">Cake log file</string>
+    <string name="ics_openvpn_log_file">ICS OpenVPN log file</string>
     <string name="ignore">Ignore</string>
     <string name="ignore_multicast_route">Ignoring multicast route: %s</string>
-    <string name="ignore_routes_summary">Ignore routed pushed by the server.</string>
+    <string name="ignore_routes_summary">Ignore routes pushed by the server.</string>
     <string name="ignored_pushed_routes">Ignore pushed routes</string>
-    <string name="import_config">Import Cake configuration</string>
+    <string name="import_config">Import OpenVPN configuration</string>
     <string name="import_config_error">Importing the config yielded an error, cannot save it</string>
     <string name="import_configuration_file">Import configuration file</string>
     <string name="import_content_resolve_error">Could not read profile to import</string>
     <string name="import_could_not_open">Could not find file %1$s mentioned in the imported config file</string>
     <string name="import_done">Done reading config file.</string>
     <string name="import_error_message">Could not import File from filesystem</string>
+    <string name="import_from_as">Import Profile from Access Server</string>
     <string name="import_log">Import log:</string>
     <string name="import_vpn">Import</string>
     <string name="import_warning_custom_options">Your configuration had a few configuration options that are not mapped to UI configurations. These options were added as custom configuration options. The custom configuration is displayed below:</string>
     <string name="imported_from_file">[Imported from: %s]</string>
     <string name="importing_config">Importing config file from source %1$s</string>
     <string name="importpkcs12fromconfig">Import PKCS12 from configuration into Android Keystore</string>
+    <string name="info_from_server">Info from server: \'%s\'</string>
     <string name="inline_file_data">[[Inline file data]]</string>
     <string name="inline_file_tab">Inline File</string>
+    <string name="install_keychain">Install new certificate</string>
+    <string name="internal_web_view">Internal WebView</string>
     <string name="ip_add_error">Could not configure IP Address \"%1$s\", rejected by the system: %2$s</string>
     <string name="ip_looks_like_subnet">Vpn topology \"%3$s\" specified but ifconfig %1$s %2$s looks more like an IP address with a network mask. Assuming \"subnet\" topology.</string>
     <string name="ip_not_cidr">Got interface information %1$s and %2$s, assuming second address is peer address of remote. Using /32 netmask for local IP. Mode given by OpenVPN is \"%3$s\".</string>
@@ -210,10 +356,12 @@
     <string name="ipv6_address">IPv6 Address</string>
     <string name="ipv6_dialog_tile">Enter IPv6 Address/Netmask in CIDR Format (e.g. 2000:dd::23/64)</string>
     <string name="jelly_keystore_alphanumeric_bug">Some versions of Android 4.1 have problems if the name of the keystore certificate contains non alphanumeric characters (like spaces, underscores or dashes). Try to reimport the certificate without special characters</string>
+    <string name="kbits_per_second">%.1f kbit/s</string>
     <string name="keep">Keep</string>
     <string name="keyChainAccessError">KeyChain Access error: %s</string>
     <string name="keychain_access">Cannot access the Android Keychain Certificates. This can be caused by a firmware upgrade or by restoring a backup of the app/app settings. Please edit the VPN and reselect the certificate under basic settings to recreate the permission to access the certificate.</string>
     <string name="keychain_nocacert">No CA Certificate returned while reading from Android keystore. Authentication will probably fail.</string>
+    <string name="last5minutes">Last 5 minutes</string>
     <string name="last_openvpn_tun_config">Opening tun interface:</string>
     <string name="lastdumpdate">(Last dump is %1$d:%2$dh old (%3$s))</string>
     <string name="loading">Loading…</string>
@@ -223,23 +371,27 @@
     <string name="log_no_last_vpn">Could not determine last connected profile for editing</string>
     <string name="log_verbosity_level">Log verbosity level</string>
     <string name="logview_options">View options</string>
+    <string name="lzo" translatable="false">LZO</string>
+    <string name="lzo_copyright" translatable="false">Copyright © 1996 – 2011 Markus Franz Xaver Johannes Oberhumer
+    </string>
     <string name="make_selection_inline">Copy into profile</string>
     <string name="management_socket_closed">Connection to OpenVPN closed (%s)</string>
+    <string name="mbits_per_second">%.1f Mbit/s</string>
     <string name="menu_add_profile">Add Profile</string>
     <string name="menu_import">Import Profile from ovpn file</string>
     <string name="menu_import_short">Import</string>
     <string name="menu_use_inline_data">Use inline data</string>
     <string name="message_no_user_edit">This profile has been added from an external app (%s) and has been marked as not user editable.</string>
-    <string name="minidump_generated">Cake crashed unexpectedly. Please consider using the send Minidump option in the main menu</string>
+    <string name="minidump_generated">OpenVPN crashed unexpectedly. Please consider using the send Minidump option in the main menu</string>
     <string name="missing_ca_certificate">Missing CA certificate</string>
     <string name="missing_certificates">Missing user certificate or user certifcate key file</string>
     <string name="missing_tlsauth">tls-auth file is missing</string>
     <string name="mobile_info">%10$s %9$s running on %3$s %1$s (%2$s), Android %6$s (%7$s) API %4$d, ABI %5$s, (%8$s)</string>
-    <string name="months_left">%d months left</string>
     <string name="mssfix_checkbox">Override MSS value of TCP payload</string>
     <string name="mssfix_dialogtitle">Set MSS of TCP payload</string>
     <string name="mssfix_invalid_value">The MSS override value has to be a integer between 0 and 9000</string>
     <string name="mssfix_value_dialog">Announce to TCP sessions running over the tunnel that they should limit their send packet sizes such that after OpenVPN has encapsulated them, the resulting UDP packet size that OpenVPN sends to its peer will not exceed this number of bytes. (default is 1450)</string>
+    <string name="mtu_invalid_value">The MTU override value has to be a integer between 64 and 9000</string>
     <string name="netchange">Reconnect on network change</string>
     <string name="netchange_summary">Turning this option on will force a reconnect if the network state is changed (e.g. WiFi to/from mobile)</string>
     <string name="netstatus">Network Status: %s</string>
@@ -248,14 +400,17 @@
     <string name="no_ca_cert_selected">You must select a CA certificate</string>
     <string name="no_certificate">You must select a certificate</string>
     <string name="no_data">No Data</string>
+    <string name="no_default_vpn_set">Default VPN not set. Please set the Default VPN before enabling this option.</string>
     <string name="no_error_found">No error found</string>
     <string name="no_external_app_allowed">No app allowed to use external API</string>
     <string name="no_keystore_cert_selected">You must select a User certificate</string>
+    <string name="no_orbotfound">Orbot application cannot be found. Please install Orbot or use manual Socks v5 integration.</string>
     <string name="no_remote_defined">No remote defined</string>
     <string name="no_vpn_profiles_defined">No VPN profiles defined.</string>
     <string name="no_vpn_support_image">Your image does not support the VPNService API, sorry :(</string>
     <string name="nobind_summary">Do not bind to local address and port</string>
-    <string name="notifcation_title">Cake - %s</string>
+    <string name="notenoughdata">Not enough data</string>
+    <string name="notifcation_title">CakeVPN - %s</string>
     <string name="notifcation_title_notconnect">Not connected</string>
     <string name="nought_alwayson_warning"><![CDATA[If you did not get a VPN confirmation dialog, you have \"Always on VPN\" enabled for another app. In that case only that app is allowed to connect to a VPN. Check under Settings-> Networks more .. -> VPNS]]></string>
     <string name="novpn_selected">No VPN selected.</string>
@@ -263,9 +418,22 @@
     <string name="official_build">official build</string>
     <string name="onbootrestart">Connect on boot</string>
     <string name="onbootrestartsummary">OpenVPN will connect the specified VPN if it was active on system boot. Please read the connection warning FAQ before using this option on Android &lt; 5.0.</string>
+    <string name="openssl" translatable="false">OpenSSL</string>
+    <string name="openssl_cipher_name">OpenSSL cipher names</string>
+    <string name="openssl_error">OpenSSL returned an error</string>
     <string name="opentun_no_ipaddr">Refusing to open tun device without IP information</string>
-    <string name="openvpn_is_no_free_vpn">To use this app you need a VPN provider/VPN gateway supporting OpenVPN (often provided by your employer). Check out http://community.openvpn.net/ for more information on OpenVPN and how to setup your own OpenVPN server.</string>
-    <string name="openvpn_log">Cake Log</string>
+    <string name="openurl_requested">Open URL to continue VPN authentication</string>
+    <string name="openvpn" translatable="false">OpenVPN</string>
+    <string name="openvpn3_nostatickeys">The OpenVPN 3 C++ implementation does not support static keys. Please change to OpenVPN 2.x under general settings.</string>
+    <string name="openvpn3_pkcs12">Using PKCS12 files directly with OpenVPN 3 C++ implementation is not supported. Please import the pkcs12 files into the Android keystore or change to OpenVPN 2.x under general settings.</string>
+    <string name="openvpn3_socksproxy">OpenVPN 3 C++ implementation does not support connecting via Socks proxy</string>
+    <string name="openvpn_is_no_free_vpn">To use this app you need a VPN provider/VPN gateway supporting OpenVPN (often provided by your employer). Check out https://community.openvpn.net/ for more information on OpenVPN and how to setup your own OpenVPN server.</string>
+    <string name="openvpn_log">OpenVPN Log</string>
+    <string name="opevpn_copyright" translatable="false">Copyright © 2002–2010 OpenVPN Technologies, Inc. &lt;sales@openvpn.net>\n
+
+        "OpenVPN" is a trademark of OpenVPN Technologies, Inc.\n
+    </string>
+    <string name="osslspeedtest">OpenSSL Crypto Speed test</string>
     <string name="override_dns">Override DNS Settings by Server</string>
     <string name="owner_fix">Fix ownership of /dev/tun</string>
     <string name="owner_fix_summary">Tries to set the owner of /dev/tun to system. Some CM9 images need this to make the VPNService API work. Requires root.</string>
@@ -273,6 +441,7 @@
     <string name="password">Password</string>
     <string name="pauseVPN">Pause VPN</string>
     <string name="payload_options">Payload options</string>
+    <string name="permission_description">Allows another app to control OpenVPN</string>
     <string name="permission_icon_app">Icon of app trying to use OpenVPN for Android</string>
     <string name="permission_revoked">VPN permission revoked by OS (e.g. other VPN program started), stopping VPN</string>
     <string name="persistent_tun_title">Persistent tun</string>
@@ -284,6 +453,7 @@
     <string name="profilename">Profile Name</string>
     <string name="prompt">%1$s attempts to control %2$s</string>
     <string name="protocol">Protocol</string>
+    <string name="proxy">Proxy</string>
     <string name="pull_off_summary">No information is requested from the server. Settings need to be specified below.</string>
     <string name="pull_on_summary">Requests IP addresses, routes and timing options from the server.</string>
     <string name="pushpeerinfo">Push Peer info</string>
@@ -312,6 +482,7 @@
     <string name="remove_connection_entry">Remove connection entry</string>
     <string name="remove_vpn">Remove VPN</string>
     <string name="remove_vpn_query">Remove the VPN Profile \'%s\'?</string>
+    <string name="request_autologin">Request autologin profile</string>
     <string name="reread_log">Reread (%d) log items from log cache file</string>
     <string name="restart">Restart</string>
     <string name="restart_vpn_after_change">Configuration changes are applied after restarting the VPN. (Re)start the VPN now?</string>
@@ -323,6 +494,7 @@
     <string name="routes_info_excl">Routes excluded: %1$s %2$s</string>
     <string name="routes_info_incl">Routes: %1$s %2$s</string>
     <string name="routing">Routing</string>
+    <string name="running_test">Running test…</string>
     <string name="samsung_broken">Even though Samsung phones are among the most selling Android phones, Samsung\'s firmware are also among the most buggy Android firmwares. The bugs are not limited to the VPN operation on these devices but many of them can be workarounded. In the following some of these bugs are described.\n\nDNS does not work unless the DNS server in the VPN range.\n\nOn many Samsung 5.x devices the allowed/disallowed apps feature does not work.\nOn Samsung 6.x VPN is reported not to work unless the VPN app is exempted from Powersave features.</string>
     <string name="samsung_broken_title">Samsung phones</string>
     <string name="save_password">Save Password</string>
@@ -361,6 +533,7 @@
     <string name="state_assign_ip">Assigning IP addresses</string>
     <string name="state_auth">Authenticating</string>
     <string name="state_auth_failed">Authentication failed</string>
+    <string name="state_auth_pending">Authentication pending</string>
     <string name="state_connected">Connected</string>
     <string name="state_connecting">Connecting</string>
     <string name="state_disconnected">Disconnect</string>
@@ -372,19 +545,28 @@
     <string name="state_resolve">Resolving host names</string>
     <string name="state_screenoff">VPN paused - screen off</string>
     <string name="state_tcp_connect">Connecting (TCP)</string>
+    <string name="state_user_vpn_password" translatable="false">Waiting for user VPN password</string>
+    <string name="state_user_vpn_password_cancelled" translatable="false">VPN password input dialog cancelled</string>
+    <string name="state_user_vpn_permission" translatable="false">Waiting for user permission to use VPN API</string>
+    <string name="state_user_vpn_permission_cancelled" translatable="false">VPN API permission dialog cancelled</string>
     <string name="state_userpause">VPN pause requested by user</string>
     <string name="state_wait">Waiting for server reply</string>
     <string name="state_waitconnectretry">Waiting %ss seconds between connection attempt</string>
+    <string name="state_waitorbot">Waiting for Orbot to start</string>
     <string name="static_keys_info">For the static configuration the TLS Auth Keys will be used as static keys</string>
-    <string name="statusline_bytecount">↓%2$s/s %1$s - ↑%4$s/s %3$s</string>
+    <string name="statusline_bytecount">↓%2$s %1$s - ↑%4$s %3$s</string>
+    <string name="summary_block_address_families">This option instructs Android to not allow protocols (IPv4/IPv6) if the VPN does not set any IPv4 or IPv6 addresses.</string>
     <string name="tap_faq2">Again? Are you kidding? No, tap mode is really not supported and sending more mail asking if it will be supported will not help.</string>
-    <string name="tap_faq3">A third time? Actually, one could write a a tap emulator based on tun that would add layer2 information on send and strip layer2 information on receive. But this tap emulator would also have to implement ARP and possibly a DHCP client. I am not aware of anybody doing any work in this direction. Contact me if you want to start coding on this.</string>
+    <string name="tap_faq3">A third time? Actually, one could write a tap emulator based on tun that would add layer2 information on send and strip layer2 information on receive. But this tap emulator would also have to implement ARP and possibly a DHCP client. I am not aware of anybody doing any work in this direction. Contact me if you want to start coding on this.</string>
     <string name="tap_mode">Tap Mode</string>
+    <string name="test_algoirhtms">Test selected algorithms</string>
     <string name="thanks_for_donation">Thanks for donating %s!</string>
     <string name="timestamp_iso">ISO</string>
     <string name="timestamp_short">Short</string>
     <string name="timestamps">Timestamps</string>
     <string name="timestamps_none">None</string>
+    <string name="title_activity_open_sslspeed">OpenSSL Speed Test</string>
+    <string name="title_block_address_families">Block IPv6 (or IPv4) if not used by the VPN</string>
     <string name="title_cancel">Cancel Confirmation</string>
     <string name="tls_auth_file">TLS Auth File</string>
     <string name="tls_authentication">TLS Authentication/Encryption</string>
@@ -394,37 +576,90 @@
     <string name="tls_key_auth">Enables the TLS Key Authentication</string>
     <string name="tls_remote_deprecated">tls-remote (DEPRECATED)</string>
     <string name="tls_settings">TLS Settings</string>
+    <string name="tor_orbot">Tor (Orbot)</string>
     <string name="translationby">English translation by Arne Schwabe&lt;arne@rfc2549.org></string>
     <string name="tun_error_helpful">On some custom ICS images the permission on /dev/tun might be wrong, or the tun module might be missing completely. For CM9 images try the fix ownership option under general settings</string>
     <string name="tun_open_error">Failed to open the tun interface</string>
     <string name="unhandled_exception">Unhandled exception: %1$s\n\n%2$s</string>
     <string name="unhandled_exception_context">%3$s: %1$s\n\n%2$s</string>
-    <string name="unknown_state"> unknown state </string>
+    <string name="unknown_state" translatable="false">Unknown state</string>
     <string name="uploaded_data">Upload</string>
     <string name="useLZO">LZO Compression</string>
     <string name="useTLSAuth">Use TLS Authentication</string>
     <string name="use_default_title">Use default Route</string>
+    <string name="use_logarithmic_scale">Use logarithmic scale</string>
     <string name="use_pull">Pull Settings</string>
     <string name="use_system_proxy">Use system proxy</string>
     <string name="use_system_proxy_summary">Use the system wide configuration for HTTP/HTTPS proxies to connect.</string>
     <string name="userpw_file">Username/Password file</string>
-    <string name="using_proxy">Using proxy %1$s %2$d</string>
+    <string name="using_proxy">Using proxy %1$s %2$s</string>
     <string name="version_and_later">%s and later</string>
     <string name="version_info">%1$s %2$s</string>
     <string name="version_upto">%s and earlier</string>
+    <string name="volume_byte">%.0f B</string>
+    <string name="volume_gbyte">%.1f GB</string>
+    <string name="volume_kbyte">%.1f kB</string>
+    <string name="volume_mbyte">%.1f MB</string>
+    <string name="vpn_allow_bypass">Allow apps to bypass the VPN</string>
     <string name="vpn_allow_radio">VPN is used for only for selected apps</string>
     <string name="vpn_allowed_apps">Allowed Apps</string>
     <string name="vpn_disallow_radio">VPN is used for all apps but exclude selected</string>
     <string name="vpn_import_hint">Use the &lt;img src=\"ic_menu_archive\"/> icon to import an existing (.ovpn or .conf) profile from your sdcard.</string>
     <string name="vpn_launch_title">Connecting to VPN…</string>
     <string name="vpn_list_title">Profiles</string>
-    <string name="vpn_shortcut">Cake Shortcut</string>
+    <string name="vpn_shortcut">OpenVPN Shortcut</string>
     <string name="vpn_status">Vpn Status</string>
     <string name="vpn_tethering_title">VPN and Tethering</string>
     <string name="vpn_type">Type</string>
     <string name="vpnbehaviour">VPN behaviour</string>
+    <string name="vpnselected">Currently selected VPN: \'%s\'</string>
     <string name="warn_no_dns">No DNS servers being used. Name resolution may not work. Consider setting custom DNS Servers. Please also note that Android will keep using your proxy settings specified for your mobile/Wi-Fi connection when no DNS servers are set.</string>
+    <string name="weakmd">&lt;p>Starting with OpenSSL version 1.1, OpenSSL rejects weak signatures in certificates like
+        MD5.&lt;/p>&lt;p>&lt;b>MD5 signatures are completely insecure and should not be used anymore.&lt;/b> MD5
+        collisions can be created in &lt;a
+        href="https://natmchugh.blogspot.de/2015/02/create-your-own-md5-collisions.html">few hours at a minimal cost.&lt;/a>.
+        You should update the VPN certificates as soon as possible.&lt;/p>&lt;p>Unfortunately, older easy-rsa
+        distributions included the config option "default_md md5". If you are using an old easy-rsa version, update to
+        the &lt;a href="https://github.com/OpenVPN/easy-rsa/releases">latest version&lt;/a>) or change md5 to sha256 and
+        regenerate your certificates.&lt;/p>&lt;p>If you really want to use old and broken certificates use the custom
+        configuration option tls-cipher "DEFAULT:@SECLEVEL=0" under advanced configuration or as additional line in your
+        imported configuration&lt;/p>
+    </string>
+    <string name="weakmd_title">Weak (MD5) hashes in certificate signature (SSL_CTX_use_certificate md too weak)</string>
     <style name="blinkt" parent="blinkt.baseTheme"/>
     <style name="blinkt.baseTheme" parent="android:Theme.DeviceDefault.Light"/>
     <style name="blinkt.dialog" parent="android:Theme.DeviceDefault.Light.Dialog"/>
+    <declare-styleable name="FileSelectLayout">
+       <attr format="string|reference" name="fileTitle"/>
+      <attr format="boolean" name="certificate"/>
+
+       <attr format="boolean" name="showClear"/>
+   </declare-styleable>
+    <declare-styleable name="PagerSlidingTabStrip">
+        <attr format="color" name="pstsIndicatorColor"/>
+        <attr format="color" name="pstsUnderlineColor"/>
+        <attr format="color" name="pstsDividerColor"/>
+        <attr format="dimension" name="pstsDividerWidth"/>
+        <attr format="dimension" name="pstsIndicatorHeight"/>
+        <attr format="dimension" name="pstsUnderlineHeight"/>
+        <attr format="dimension" name="pstsDividerPadding"/>
+        <attr format="dimension" name="pstsTabPaddingLeftRight"/>
+        <attr format="dimension" name="pstsScrollOffset"/>
+        <attr format="reference" name="pstsTabBackground"/>
+        <attr format="boolean" name="pstsShouldExpand"/>
+        <attr format="boolean" name="pstsTextAllCaps"/>
+        <attr format="boolean" name="pstsPaddingMiddle"/>
+        <attr name="pstsTextStyle">
+            <flag name="normal" value="0x0"/>
+            <flag name="bold" value="0x1"/>
+            <flag name="italic" value="0x2"/>
+        </attr>
+        <attr name="pstsTextSelectedStyle">
+            <flag name="normal" value="0x0"/>
+            <flag name="bold" value="0x1"/>
+            <flag name="italic" value="0x2"/>
+        </attr>
+        <attr format="float" name="pstsTextAlpha"/>
+        <attr format="float" name="pstsTextSelectedAlpha"/>
+    </declare-styleable>
 </resources>
