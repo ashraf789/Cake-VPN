@@ -632,7 +632,7 @@
     <declare-styleable name="FileSelectLayout">
        <attr format="string|reference" name="fileTitle"/>
       <attr format="boolean" name="certificate"/>
-
+<!--     <attr name="taskid" format="integer" /> -->
        <attr format="boolean" name="showClear"/>
    </declare-styleable>
     <declare-styleable name="PagerSlidingTabStrip">

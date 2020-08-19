@@ -278,13 +278,12 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
     public void status(String status) {
 
         if (status.equals("connect")) {
-
-            binding.vpnBtn.setText(getString(R.string.connect));
+            binding.vpnBtn.setText(getContext().getString(R.string.connect));
         } else if (status.equals("connecting")) {
-            binding.vpnBtn.setText(getString(R.string.connecting));
+            binding.vpnBtn.setText(getContext().getString(R.string.connecting));
         } else if (status.equals("connected")) {
 
-            binding.vpnBtn.setText(getString(R.string.disconnect));
+            binding.vpnBtn.setText(getContext().getString(R.string.disconnect));
 
         } else if (status.equals("tryDifferentServer")) {
 
@@ -322,10 +321,10 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
                 String byteIn = intent.getStringExtra("byteIn");
                 String byteOut = intent.getStringExtra("byteOut");
 
-                if (duration.equals(null)) duration = "00:00:00";
-                if (lastPacketReceive.equals(null)) lastPacketReceive = "0";
-                if (byteIn.equals(null)) byteIn = " ";
-                if (byteOut.equals(null)) byteOut = " ";
+                if (duration == null) duration = "00:00:00";
+                if (lastPacketReceive == null) lastPacketReceive = "0";
+                if (byteIn == null) byteIn = " ";
+                if (byteOut == null) byteOut = " ";
                 updateConnectionStatus(duration, lastPacketReceive, byteIn, byteOut);
             } catch (Exception e) {
                 e.printStackTrace();

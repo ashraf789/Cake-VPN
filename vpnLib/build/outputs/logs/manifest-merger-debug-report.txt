@@ -1,37 +1,37 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
-INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
-INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
-INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
-INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
-INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
-INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
+ADDED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
+INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
+INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
+INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
+INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
+INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
+INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
 	package
-		ADDED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml:1:11-38
-		INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
+		ADDED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml:1:11-38
+		INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
+		INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
-		INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
+		INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
+		ADDED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
+		INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
+		ADDED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
 	android:versionCode
-		INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
-		INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
+		INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
+		ADDED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml:1:1-41
+		INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
 uses-sdk
-INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
-INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
-INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
-INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
+INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
+INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
+INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
+INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
+		INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
+		ADDED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
+		INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\Baa\StudioProjects\Cake-VPN\vpnLib\src\main\AndroidManifest.xml
+		INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
+		ADDED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
+		INJECTED from H:\Android\CakeVPN\vpnLib\src\main\AndroidManifest.xml
