@@ -75,7 +75,6 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
         updateCurrentServerIcon(server.getFlagUrl());
 
         connection = new CheckInternetConnection();
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter("connectionState"));
     }
 
     @Override
@@ -384,10 +383,18 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
 
     @Override
     public void onResume() {
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter("connectionState"));
+
         if (server == null) {
             server = preference.getServer();
         }
         super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(broadcastReceiver);
+        super.onPause();
     }
 
     /**
