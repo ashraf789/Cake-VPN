@@ -101,6 +101,7 @@ de/blinkt/openvpn/core/OpenVPNService.java
  de.blinkt.openvpn.core.OpenVPNService$1
  de.blinkt.openvpn.core.OpenVPNService$2
  de.blinkt.openvpn.core.OpenVPNService$3
+ de.blinkt.openvpn.core.OpenVPNService$4
  de.blinkt.openvpn.core.OpenVPNService$LocalBinder
 de/blinkt/openvpn/core/TrafficHistory.java
  de.blinkt.openvpn.core.TrafficHistory
