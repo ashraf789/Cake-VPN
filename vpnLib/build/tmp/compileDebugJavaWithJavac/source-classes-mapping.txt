@@ -2,12 +2,12 @@ de/blinkt/openvpn/core/ProfileManager.java
  de.blinkt.openvpn.core.ProfileManager
 de/blinkt/openvpn/core/NativeUtils.java
  de.blinkt.openvpn.core.NativeUtils
-de/blinkt/openvpn/core/LollipopDeviceStateListener.java
- de.blinkt.openvpn.core.LollipopDeviceStateListener
 de/blinkt/openvpn/api/ConfirmDialog.java
  de.blinkt.openvpn.api.ConfirmDialog
  de.blinkt.openvpn.api.ConfirmDialog$1
  de.blinkt.openvpn.api.ConfirmDialog$2
+de/blinkt/openvpn/core/LollipopDeviceStateListener.java
+ de.blinkt.openvpn.core.LollipopDeviceStateListener
 de/blinkt/openvpn/api/GrantPermissionsActivity.java
  de.blinkt.openvpn.api.GrantPermissionsActivity
 org/spongycastle/util/io/pem/PemGenerationException.java
@@ -55,10 +55,10 @@ de/blinkt/openvpn/api/ExternalOpenVPNService.java
 de/blinkt/openvpn/core/NetworkSpace.java
  de.blinkt.openvpn.core.NetworkSpace
  de.blinkt.openvpn.core.NetworkSpace$IpAddress
-de/blinkt/openvpn/utils/TotalTraffic.java
- de.blinkt.openvpn.utils.TotalTraffic
 de/blinkt/openvpn/api/SecurityRemoteException.java
  de.blinkt.openvpn.api.SecurityRemoteException
+de/blinkt/openvpn/utils/TotalTraffic.java
+ de.blinkt.openvpn.utils.TotalTraffic
 de/blinkt/openvpn/api/APIVpnProfile.java
  de.blinkt.openvpn.api.APIVpnProfile
  de.blinkt.openvpn.api.APIVpnProfile$1
@@ -103,14 +103,14 @@ de/blinkt/openvpn/core/OpenVPNService.java
  de.blinkt.openvpn.core.OpenVPNService$3
  de.blinkt.openvpn.core.OpenVPNService$4
  de.blinkt.openvpn.core.OpenVPNService$LocalBinder
-org/spongycastle/util/encoders/Encoder.java
- org.spongycastle.util.encoders.Encoder
 de/blinkt/openvpn/core/TrafficHistory.java
  de.blinkt.openvpn.core.TrafficHistory
  de.blinkt.openvpn.core.TrafficHistory$1
  de.blinkt.openvpn.core.TrafficHistory$LastDiff
  de.blinkt.openvpn.core.TrafficHistory$TrafficDatapoint
  de.blinkt.openvpn.core.TrafficHistory$TrafficDatapoint$1
+org/spongycastle/util/encoders/Encoder.java
+ org.spongycastle.util.encoders.Encoder
 de/blinkt/openvpn/DisconnectVPNActivity.java
  de.blinkt.openvpn.DisconnectVPNActivity
  de.blinkt.openvpn.DisconnectVPNActivity$1
@@ -157,15 +157,15 @@ de/blinkt/openvpn/VpnProfile.java
  de.blinkt.openvpn.VpnProfile
  de.blinkt.openvpn.VpnProfile$1
  de.blinkt.openvpn.VpnProfile$NoCertReturnedException
-de/blinkt/openvpn/core/OrbotHelper.java
- de.blinkt.openvpn.core.OrbotHelper
- de.blinkt.openvpn.core.OrbotHelper$1
- de.blinkt.openvpn.core.OrbotHelper$StatusCallback
 de/blinkt/openvpn/core/ExtAuthHelper.java
  de.blinkt.openvpn.core.ExtAuthHelper
  de.blinkt.openvpn.core.ExtAuthHelper$1
  de.blinkt.openvpn.core.ExtAuthHelper$ExternalAuthProvider
  de.blinkt.openvpn.core.ExtAuthHelper$ExternalAuthProviderConnection
+de/blinkt/openvpn/core/OrbotHelper.java
+ de.blinkt.openvpn.core.OrbotHelper
+ de.blinkt.openvpn.core.OrbotHelper$1
+ de.blinkt.openvpn.core.OrbotHelper$StatusCallback
 de/blinkt/openvpn/core/IOpenVPNServiceInternal.java
  de.blinkt.openvpn.core.IOpenVPNServiceInternal
  de.blinkt.openvpn.core.IOpenVPNServiceInternal$Default
@@ -191,16 +191,16 @@ de/blinkt/openvpn/core/VPNLaunchHelper.java
  de.blinkt.openvpn.core.VPNLaunchHelper
 org/spongycastle/util/io/pem/PemObjectGenerator.java
  org.spongycastle.util.io.pem.PemObjectGenerator
-de/blinkt/openvpn/core/IStatusCallbacks.java
- de.blinkt.openvpn.core.IStatusCallbacks
- de.blinkt.openvpn.core.IStatusCallbacks$Default
- de.blinkt.openvpn.core.IStatusCallbacks$Stub
- de.blinkt.openvpn.core.IStatusCallbacks$Stub$Proxy
 de/blinkt/openvpn/api/IOpenVPNAPIService.java
  de.blinkt.openvpn.api.IOpenVPNAPIService
  de.blinkt.openvpn.api.IOpenVPNAPIService$Default
  de.blinkt.openvpn.api.IOpenVPNAPIService$Stub
  de.blinkt.openvpn.api.IOpenVPNAPIService$Stub$Proxy
+de/blinkt/openvpn/core/IStatusCallbacks.java
+ de.blinkt.openvpn.core.IStatusCallbacks
+ de.blinkt.openvpn.core.IStatusCallbacks$Default
+ de.blinkt.openvpn.core.IStatusCallbacks$Stub
+ de.blinkt.openvpn.core.IStatusCallbacks$Stub$Proxy
 de/blinkt/openvpn/core/Preferences.java
  de.blinkt.openvpn.core.Preferences
 org/spongycastle/util/encoders/Base64.java
