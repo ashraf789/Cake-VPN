@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -16,6 +17,7 @@ import android.widget.ImageButton;
 
 import com.lazycoder.cakevpn.R;
 import com.lazycoder.cakevpn.adapter.ServerListRVAdapter;
+import com.lazycoder.cakevpn.databinding.ActivityMainBinding;
 import com.lazycoder.cakevpn.interfaces.ChangeServer;
 import com.lazycoder.cakevpn.interfaces.NavItemClickListener;
 import com.lazycoder.cakevpn.model.Server;
@@ -31,19 +33,18 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
     private RecyclerView serverListRv;
     private ArrayList<Server> serverLists;
     private ServerListRVAdapter serverListRVAdapter;
-    private DrawerLayout drawer;
+    //private DrawerLayout drawer;
     private ChangeServer changeServer;
+    private ActivityMainBinding binding;
 
     public static final String TAG = "CakeVPN";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         // Initialize all variable
         initializeAll();
-
-        ImageButton menuRight = findViewById(R.id.navbar_right);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,15 +53,10 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
 
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+                this, binding.drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        binding.drawerLayout.addDrawerListener(toggle);
 
-        menuRight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                closeDrawer();
-            }
-        });
+        binding.navViewRight.setOnClickListener(v -> closeDrawer());
 
         transaction.add(R.id.container, fragment);
         transaction.commit();
@@ -77,7 +73,6 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
      * Initialize all object, listener etc
      */
     private void initializeAll() {
-        drawer = findViewById(R.id.drawer_layout);
 
         fragment = new MainFragment();
         serverListRv = findViewById(R.id.serverListRv);
@@ -93,11 +88,11 @@ public class MainActivity extends AppCompatActivity implements NavItemClickListe
     /**
      * Close navigation drawer
      */
-    public void closeDrawer(){
-        if (drawer.isDrawerOpen(GravityCompat.END)) {
-            drawer.closeDrawer(GravityCompat.END);
+    private void closeDrawer(){
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.END)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.END);
         } else {
-            drawer.openDrawer(GravityCompat.END);
+            binding.drawerLayout.openDrawer(GravityCompat.END);
         }
     }
 

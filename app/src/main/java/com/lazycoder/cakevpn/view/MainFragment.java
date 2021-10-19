@@ -40,7 +40,7 @@ import de.blinkt.openvpn.core.VpnStatus;
 
 import static android.app.Activity.RESULT_OK;
 
-public class MainFragment extends Fragment implements View.OnClickListener, ChangeServer {
+public class MainFragment extends Fragment implements ChangeServer {
 
     private Server server;
     private CheckInternetConnection connection;
@@ -80,8 +80,17 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        binding.vpnBtn.setOnClickListener(this);
+        binding.setClick(v -> {
+            switch (v.getId()) {
+                case R.id.vpnBtn:
+                    // Vpn is running, user would like to disconnect current connection.
+                    if (vpnStart) {
+                        confirmDisconnect();
+                    }else {
+                        prepareVpn();
+                    }
+            }
+        });
 
         // Checking is vpn already running or not
         isServiceRunning();
@@ -89,37 +98,15 @@ public class MainFragment extends Fragment implements View.OnClickListener, Chan
     }
 
     /**
-     * @param v: click listener view
-     */
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.vpnBtn:
-                // Vpn is running, user would like to disconnect current connection.
-                if (vpnStart) {
-                    confirmDisconnect();
-                }else {
-                    prepareVpn();
-                }
-        }
-    }
-
-    /**
      * Show show disconnect confirm dialog
      */
-    public void confirmDisconnect(){
+    private void confirmDisconnect(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(getActivity().getString(R.string.connection_close_confirm));
 
-        builder.setPositiveButton(getActivity().getString(R.string.yes), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                stopVpn();
-            }
-        });
-        builder.setNegativeButton(getActivity().getString(R.string.no), new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // User cancelled the dialog
-            }
+        builder.setPositiveButton(getActivity().getString(R.string.yes), (dialog, id) -> stopVpn());
+        builder.setNegativeButton(getActivity().getString(R.string.no), (dialog, id) -> {
+            // User cancelled the dialog
         });
 
         // Create the AlertDialog

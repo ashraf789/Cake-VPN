@@ -58,12 +58,12 @@ public class ServerListRVAdapter extends RecyclerView.Adapter<ServerListRVAdapte
         return serverLists.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
         LinearLayout serverItemLayout;
         ImageView serverIcon;
         TextView serverCountry;
 
-        public MyViewHolder(@NonNull View itemView) {
+        MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             serverItemLayout = itemView.findViewById(R.id.serverItemLayout);
