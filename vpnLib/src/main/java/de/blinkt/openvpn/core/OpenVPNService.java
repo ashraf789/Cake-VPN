@@ -283,13 +283,18 @@ public class OpenVPNService extends VpnService implements StateListener, Callbac
 
     @RequiresApi(Build.VERSION_CODES.O)
     private String createNotificationChannel(String channelId) {
-        NotificationChannel chan = new NotificationChannel(channelId,
-                getString(R.string.channel_name_background), NotificationManager.IMPORTANCE_NONE);
-        chan.setLightColor(Color.BLUE);
-        chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
-        NotificationManager service = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        service.createNotificationChannel(chan);
-        return channelId;
+        if (lastChannel == null || lastChannel.isEmpty()){
+            NotificationChannel chan = new NotificationChannel(channelId,
+                    getString(R.string.channel_name_background), NotificationManager.IMPORTANCE_NONE);
+            chan.setLightColor(Color.BLUE);
+            chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+            NotificationManager service = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            service.createNotificationChannel(chan);
+
+            lastChannel = channelId;
+        }
+
+        return lastChannel;
     }
 
     private void showNotification(final String msg, String tickerText, @NonNull String channel,
