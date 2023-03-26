@@ -304,7 +304,9 @@ public class OpenVPNService extends VpnService implements StateListener, Callbac
         }
 
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        Notification.Builder nBuilder = new Notification.Builder(this);
+        //The Error: it seems a bug in android greater than version 8, where it needs to Identify the channelId before a starting a foreground : https://stackoverflow.com/questions/47531742/startforeground-fail-after-upgrade-to-android-8-1/51281297#51281297
+        // It was Already Fixed in Android 12 :https://issuetracker.google.com/issues/192032398#comment6
+        Notification.Builder nBuilder = new Notification.Builder(this,channel);
 
         int priority;
         if (channel.equals(NOTIFICATION_CHANNEL_BG_ID))
