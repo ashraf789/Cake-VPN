@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <bool name="logSildersAlwaysVisible">true</bool>
-    <dimen name="stdpadding">16dp</dimen>
-</resources>
